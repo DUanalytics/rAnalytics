@@ -1,5 +1,7 @@
 #dplyr - mtcars
 library(dplyr)
+mtcars
+head(mtcars)
 
 #Filter----
 
