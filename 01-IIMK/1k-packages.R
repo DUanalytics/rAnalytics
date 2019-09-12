@@ -1,5 +1,23 @@
 #Install packages for Data Analytics Course
 
+#install package
+install.packages('packageName')
+#multiple packages
+install.packages(c('package1', 'package2'))
+
+#load library( oneby one)
+#library(package1)
+library(dplyr)
+#check invironment
+ls()
+
+.libPaths() # get library location
+library()   # see all packages installed
+search()    # see packages currently loaded
+#remove library from environment
+detach("package:dplyr", unload = TRUE)
+search()    # see packages currently loaded
+#dplyr gone
 
 #install java from web
 #https://www.java.com/en/download/
