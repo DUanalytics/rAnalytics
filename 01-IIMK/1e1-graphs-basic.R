@@ -109,3 +109,4 @@ pairs(mtcars)
 pairs(mtcars[1:4])
 options(digits=4)
 pairs(mtcars[c('mpg', 'wt','hp')])
+
