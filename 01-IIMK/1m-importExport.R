@@ -53,9 +53,9 @@ head(newdata)
 #Excel----
 #Create a excel file with data in 2 sheets
 # first row contains variable names
-#C:\Program Files\Java\jre1.8.0_191
-Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_191')
-#library(rjava)
+#C:\Program Files\Java\jre1.8.0_221
+Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_221')
+library(rJava)
 library(xlsx)
 df_excel1 = read.xlsx( "./data/myexcel.xlsx", 1)
 df_excel1
