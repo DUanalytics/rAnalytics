@@ -5,27 +5,38 @@ mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 ## view the first few rows of the data
 head(mydata)
 summary(mydata)
+dim(mydata)
+str(mydata)
+table(mydata$admit)
+sd(mydata$gre)
 sapply(mydata, sd)
 
 ## two-way contingency table of categorical outcome and predictors we want
 ## to make sure there are not 0 cells
 xtabs(~admit + rank, data = mydata)
-
+str(mydata)
 #convert rank into factors
 mydata$rank <- factor(mydata$rank)
-mylogit <- glm(admit ~ gre + gpa + rank, data = mydata, family = "binomial")
-
-summary(mylogit)
+str(mydata)
+?glm
+model1 <- glm(admit ~ gre + gpa + rank, data = mydata, family = "binomial")
+summary(model1)
+#another model without rank
+model2 <- glm(admit ~ gre + gpa , data = mydata, family = "binomial")
+summary(model2)
+AIC(mylogit)
+AIC(model2)
 
 ## CIs using profiled log-likelihood
-confint(mylogit)
+confint(model1)
 
 ## CIs using standard errors
-confint.default(mylogit)
+confint.default(model1)
 
 #Rank Significance - Wald Test
+?wald.test
 library(aod)
-aod::wald.test(b = coef(mylogit), Sigma = vcov(mylogit), Terms = 4:6)
+aod::wald.test(b = coef(model1), Sigma = vcov(mylogit), Terms = 4:6)
 l <- cbind(0, 0, 0, 1, -1, 0)
 wald.test(b = coef(mylogit), Sigma = vcov(mylogit), L = l)
 
@@ -44,7 +55,7 @@ mydata$prob=prob
 newdata1 <- with(mydata, data.frame(gre = mean(gre), gpa = mean(gpa), rank = factor(1:4)))
 ## view data frame
 newdata1
-newdata1$rankP <- predict(mylogit, newdata = newdata1, type = "response")
+newdata1$rankP <- predict(model1, newdata = newdata1, type = "response")
 newdata1
 newdata2 <- with(mydata, data.frame(gre = rep(seq(from = 200, to = 800, length.out = 100),4), gpa = mean(gpa), rank = factor(rep(1:4, each = 100))))
 newdata3 <- cbind(newdata2, predict(mylogit, newdata = newdata2, type = "link", se = TRUE))
