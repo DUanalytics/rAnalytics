@@ -3,9 +3,9 @@
 #CSV Files----
 #Read from CSV file in PC
 head(iris)
-write.csv(iris, "./data/iris.csv", row.names=F)
-write.csv(iris, "./data/irisT.csv", row.names=T)
-
+write.csv(iris, "./data/iris.csv", row.names=F) #without rownames
+write.csv(iris, "./data/irisT.csv", row.names=T)  #with rownames
+#go to folder data and open these csv files
 read1 = read.csv(file="./data/iris.csv", header = TRUE,sep = ",")
 read1
 read1 = read.csv(file="./data/dhiraj.csv", header = TRUE,sep = ",")
