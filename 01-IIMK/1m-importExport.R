@@ -57,10 +57,17 @@ head(newdata)
 Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_221')
 library(rJava)
 library(xlsx)
-df_excel1 = read.xlsx( "./data/myexcel.xlsx", 1)
+write.xlsx2(mtcars, file='./data/mtcars.xlsx', sheetName = 'mtcars1', row.names=F, append=T)
+df_excel1 = read.xlsx( "./data/mtcars.xlsx", 1)
 df_excel1
-# read in the worksheet named mysheet
-df_excel2a = read.xlsx("./data/myexcel.xlsx", sheetName = "bowlers")
-df_excel2a
-df_excel2b = read.xlsx( "./data/myexcel.xlsx", sheetIndex = 2)
+
+write.xlsx2(iris, file='./data/mtcars.xlsx', sheetName = 'iris1', row.names=F, append=T)
+df_excel2 = read.xlsx( "./data/mtcars.xlsx", 2)
+df_excel2
+
+write.xlsx2(iris, file='./data/mtcars.xlsx', sheetName = 'iris2', row.names=F, append=T)
+df_excel2b = read.xlsx( "./data/mtcars.xlsx", 'iris2')
 df_excel2b
+#see the excel sheet in data folder
+
+#end here
