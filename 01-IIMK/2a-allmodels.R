@@ -1,6 +1,7 @@
-# All models
-library(dplyr)
+# All models - This code performs all modeling in quick method.
+# for details go detail code.
 
+library(dplyr)
 
 #Linear Regression
 head(women)
@@ -39,12 +40,13 @@ summary(fit2)
 cbind(ndata2, predicted2, predictedclass2)
 
 #Data Partition
-
+#see detailed case
+#----------------------------------------------------
 
 
 
 #Decision Tree - Classification 
-url3 = 'https://raw.githubusercontent.com/thomaspernet/data_csv_r/master/data/titanic_csv.csv'
+url3 = 'https://raw.githubusercontent.com/DUanalytics/datasets/master/csv/titanic_train.csv'
 data3a = read.csv(url3)
 head(data3a)
 names(data3a)
@@ -56,7 +58,7 @@ library(rpart)
 library(rpart.plot)
 
 #Decision Tree
-fit3 = rpart(survived ~ ., data = data3, method = 'class')
+fit3 = rpart(Survived ~ ., data = data3, method = 'class')
 fit3
 rpart.plot(fit3, extra = 106, cex=.8,nn=T)  #plot
 printcp(fit3) #select complexity parameter
@@ -69,6 +71,16 @@ table(data3$survived)
 predicted3 = predict(prunetree3, newdata=ndata3, type='class')
 predicted3b= predict(prunetree3, newdata=ndata3, type='prob')
 cbind(ndata3, predicted3, predicted3b)
+#predict on test set
+url3b ='https://raw.githubusercontent.com/DUanalytics/datasets/master/csv/titanic_test.csv'  #test set
+data3b = read.csv(url3b)
+head(data3b)
+names(data3b)
+data3b = data3b[, c('Pclass','Sex','Age','SibSp')]
+#select few columns only
+head(data3b)
+
+
 
 #similarly Regression Tree can be made
 
