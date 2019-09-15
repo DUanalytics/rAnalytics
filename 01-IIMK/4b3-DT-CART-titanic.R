@@ -2,7 +2,7 @@
 #we want predict for combination of input variables, is a person likely to survive or not
 
 #import data from online site
-path = 'https://raw.githubusercontent.com/thomaspernet/data_csv_r/master/data/titanic_csv.csv'
+path = 'https://raw.githubusercontent.com/DUanalytics/datasets/master/csv/titanic_train.csv'
 titanic <- read.csv(path)
 head(titanic)
 names(titanic)
