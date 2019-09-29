@@ -2,20 +2,9 @@
 
 #base plot
 
-symbols(mtcars$mpg, mtcars$wt, mtcars$hp, inches=.2, xlab="MPG", ylab="Weight",title=' Bubble Plot using mtcars')
-text(mtcars$mpg, mtcars$wt,rownames(mtcars), cex=.5, col=mtcars$vs)
-title(main='Bubble Plot using mtcars', sub = 'Size is proportional to hp')
-
-#ggplot - qplot
-qplot(x=mpg, y=wt, data = mtcars, label = rownames(mtcars), colour='red', size = hp/2) + geom_text(colour = "black", hjust=0,vjust=1, size=3) + ggtitle('Bubble Plot using qplot', subtitle = 'Size is proportional to hp/2')
-
-#ggplot
-p1 <- ggplot(data=mtcars, aes(x=mpg, y=wt)) +  geom_point(aes(size=hp/2), colour = 'green', alpha=.5)
-p1
-p2 = p1 +  geom_text(aes(x=mpg, y=wt, label=rownames(mtcars)), colour = "black", hjust=0,vjust=1, size=3) 
-p2
-p3 = p2 + scale_size_area( max_size = 10, guide=F) + scale_alpha(guide=F)
-p3
+symbols(mtcars$mpg, mtcars$wt, mtcars$hp, inches=.2, xlab="MPG", ylab
+        
+        p3
 p4 = p3 + labs(x='MPG', y='Weight', title='Bubble Chart in GGplot using MTCARS dataset')  +  theme(plot.subtitle=element_text(size=12, hjust=0.5, face="italic", color="blue"))
 p4
 p5 = p4 + labs( subtitle='Size of Point is proportional to HP/2' ) 
