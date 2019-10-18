@@ -68,6 +68,6 @@ df_excel2
 write.xlsx2(iris, file='./data/mtcars.xlsx', sheetName = 'iris2', row.names=F, append=T)
 df_excel2b = read.xlsx( "./data/mtcars.xlsx", 'iris2')
 df_excel2b
-#see the excel sheet in data folder
+#see the excel sheet in data folder: windows explorer
 
 #end here

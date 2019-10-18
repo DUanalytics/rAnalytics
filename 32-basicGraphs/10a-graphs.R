@@ -2,7 +2,6 @@
 
 #plot, histogram, pie, boxplot, linechart, correlation plot
 
-
 #plot
 women
 plot(women)
@@ -66,5 +65,8 @@ cor(mtcars)
 pairs(mtcars)
 options(digits=4)
 pairs(mtcars[1:4])
+
+
+#end
 
 

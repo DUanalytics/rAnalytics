@@ -46,3 +46,4 @@ xtabs(Freq ~ Gender + Admit, DF)
 xtabs( ~ Gender + Admit )
 ## And for testing independence ...
 summary(xtabs(Freq ~ ., DF))
+
