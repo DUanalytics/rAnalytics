@@ -7,6 +7,7 @@ regr1 = "https://docs.google.com/spreadsheets/d/1QogGSuEab5SZyZIw1Q8h-0yrBNs1Z_e
 logr1 = "https://docs.google.com/spreadsheets/d/1QogGSuEab5SZyZIw1Q8h-0yrBNs1Z_eEBJG7oRESW5k/edit#gid=560796239"
 
 df1 = as.data.frame(gsheet2tbl(regr1))
+df1
 df2 = as.data.frame(gsheet2tbl(logr1))
 str(df)
 df2
