@@ -1,5 +1,6 @@
 # date sequence as required
 #https://cran.r-project.org/web/packages/bizdays/bizdays.pdf
+#user defined
 
 library(lubridate)
 library(bizdays)
@@ -64,6 +65,45 @@ Q1 <- expand.grid(c('Q'), q1)
 H1 <- expand.grid(c('H'), h1)
 Y1 <- expand.grid(c('H'), y1)
 rbind(D1, WD1, M1, Q1, H1, Y1)
+
+#------
+?difftime
+difftime(time1=strptime("06-11-2019", format = "%d-%m-%Y"), time2=strptime("01-11-2018", format = "%d-%m-%Y") ,units="weeks")
+#months
+(zoo::as.yearmon(x=strptime("06-11-2019", format = "%d-%m-%Y")) - zoo::as.yearmon(x=strptime("01-11-2018", format = "%d-%m-%Y")))  * 12
+
+
+# quarters
+(zoo::as.yearqtr(x=strptime("06-11-2019", format = "%d-%m-%Y")) - zoo::as.yearqtr(x=strptime("01-11-2018", format = "%d-%m-%Y")))  * 4
+
+# years
+(lubridate::year(x=strptime("06-11-2019", format = "%d-%m-%Y")) - lubridate::year(x=strptime("01-11-2018", format = "%d-%m-%Y"))) 
+
+#age--------------
+age <- function(dob, age.day = today(), units = "years", floor = TRUE) {
+  calc.age = interval(dob, age.day) / duration(num = 1, units = units)
+  if (floor) return(as.integer(floor(calc.age)))
+  return(calc.age)
+}
+
+my.dob = as.Date('1967-06-23')
+age(my.dob)
+age(my.dob, floor = FALSE)
+age(my.dob, units = "minutes")
+seq(my.dob, length.out = 6, by = "years") #after year gap
+age(seq(my.dob, length.out = 6, by = "years"))
+
+
+#------------
+(dates <- c(dmy('01.11.2018'),dmy('05.11.2019')))
+span <- dates[1] %--% dates[2] #creating an interval object
+
+#creating period objects 
+as.period(span, unit = 'year') 
+as.period(span, unit = 'month')
+as.period(span, unit = 'day')
+#Periods do not accept weeks as units. But you can convert durations to weeks:
+as.duration(span)/ dweeks(1)
 
 
 
