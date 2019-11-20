@@ -84,3 +84,19 @@ plot(1:5, wss3, type="b")
 abline(v = 3, lty =2)
 
 fviz_nbclust(df3, kmeans, method = "silhouette")
+
+
+#fields-------------------------------
+library(fields)
+x <- c(3,4,5) ; y <- c(6,7,8,9)
+x;y
+rdist(x, y)
+#rows on x ; columns on y
+i=1; j=1
+for (i in 1:3) { 
+  for (j in 1:4) {
+    d <- abs(x[i]-y[j])
+   # cat(paste(d," "))
+    cat(d, ' ')
+  }
+}
