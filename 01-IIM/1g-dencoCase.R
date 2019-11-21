@@ -25,11 +25,10 @@ str(denco2)
 #names(sales1)
 
 # whichever you read the data, store it in sales object
-sales = sales1  # keeping a backup
+sales = sales3  # keeping a backup
 str(sales)
 class(sales)
 str(sales)
-?summary
 summary(sales)
 
 str(sales)

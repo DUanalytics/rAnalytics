@@ -3,7 +3,6 @@ library(dplyr)
 #library(tidyverse)
 #Filter----
 
-
 filter(mtcars, cyl == 8)
 filter(mtcars, cyl < 6)
 
@@ -29,13 +28,14 @@ mutate(mtcars, cyl = NULL) #do not display cyl
 
 #slice-----
 slice(mtcars, 1L)
+mtcars %>% slice(1L)
 slice(mtcars, n())
 slice(mtcars, 5:n())
 slice(mtcars, c(2,4,5,10))
 
 (by_cyl <- group_by(mtcars, cyl)) # ???
 slice(by_cyl, 1:2)
-
+mtcars %>% group_by(cyl) %>% slice(1:2)
 #structure----
 tbl_df(mtcars) # convert to tbl class
 glimpse(mtcars)  # dense summary of tbl data
@@ -55,8 +55,8 @@ summarise(group_by(mtcars, cyl), m = mean(disp), sd = sd(disp))
 
 #summarise_all
 mtcars %>% group_by(am, gear) %>% summarise_all(mean)
-mtcars %>% group_by(am, gear)%>% summarise_all(c("min", "max"))
-mtcars %>% group_by(am, gear)%>% summarise_all(funs(med = median))
+mtcars %>% group_by(am, gear)%>% summarise_all(c("min", "max"))  %>% as.data.frame()
+mtcars %>% group_by(am, gear)%>% summarise_all(list(med = median))
 
 
 

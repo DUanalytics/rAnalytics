@@ -2,17 +2,24 @@
 
 #CSV Files----
 #Read from CSV file in PC
+head(mtcars)
+rownames(mtcars)
+write.csv(mtcars, "./data/mtcarsF.csv", row.names=F) #without rownames
+write.csv(mtcars, "./data/mtcarsT.csv", row.names=T) #without rownames
+
 head(iris)
-write.csv(iris, "./data/iris.csv", row.names=F) #without rownames
+write.csv(iris, "./data/irisF.csv", row.names=F) #without rownames
 write.csv(iris, "./data/irisT.csv", row.names=T)  #with rownames
+
 #go to folder data and open these csv files
-read1 = read.csv(file="./data/iris.csv", header = TRUE,sep = ",")
-read1
-read1 = read.csv(file="./data/dhiraj.csv", header = TRUE,sep = ",")
-head(read1)
-str(read1)
-class(read1)
-head(read1)
+readiris = read.csv(file="./data/irisF.csv", header = TRUE,sep = ",")
+readiris
+readmtcars = read.csv(file="./data/mtcarsF.csv", header = TRUE,sep = ",")
+head(readmtcars)
+str(readmtcars)
+class(readmtcars)
+head(readmtcars)
+
 read2 = read.table(file="./data/iris.csv", header = TRUE,sep = ",")
 str(read2); class(read2)
 head(read2)
@@ -57,8 +64,10 @@ head(newdata)
 Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_221')
 library(rJava)
 library(xlsx)
+write.xlsx2(mtcars, file='./data/iimS.xlsx', sheetName = 'mtcars1', row.names=F, append=T)
+
 write.xlsx2(mtcars, file='./data/mtcars.xlsx', sheetName = 'mtcars1', row.names=F, append=T)
-df_excel1 = read.xlsx( "./data/mtcars.xlsx", 1)
+df_excel1 = read.xlsx( "./data/iimS.xlsx", 1)
 df_excel1
 
 write.xlsx2(iris, file='./data/mtcars.xlsx', sheetName = 'iris1', row.names=F, append=T)
