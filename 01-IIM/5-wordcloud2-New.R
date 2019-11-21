@@ -24,5 +24,5 @@ wordcloud2(demoFreqC, size = 2, minRotation = -pi/6, maxRotation = -pi/6,  rotat
 colorVec = rep(c('red', 'skyblue'), length.out=nrow(demoFreq))
 wordcloud2(demoFreq, color = colorVec, fontWeight = "bold")
 
-wordcloud2(demoFreq,
-           color = ifelse(demoFreq[, 2] > 20, 'red', 'skyblue'))
+wordcloud2(demoFreq, color = ifelse(demoFreq[, 2] > 20, 'red', 'skyblue'))
+
