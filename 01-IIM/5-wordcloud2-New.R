@@ -2,14 +2,15 @@
 
 #install.packages('wordcloud2')
 library(wordcloud2)
-
-?wordcloud2
 df = data.frame(word=c('mdi','iim','imt'),freq=c(20,23,15))
 df
 wordcloud2(df)
 
 
 head(demoFreq)
+dim(demoFreq)
+wordcloud2(demoFreq)
+
 wordcloud2(demoFreq, size = 2, color = "random-light", backgroundColor = "grey")
 names(demoFreq)
 wordcloud2(demoFreq, size = 2, minRotation = -pi/2, maxRotation = -pi/2)
@@ -20,7 +21,7 @@ wordcloud2(demoFreqC, size = 2,  color = "random-light", backgroundColor = "grey
 wordcloud2(demoFreqC, size = 2, minRotation = -pi/6, maxRotation = -pi/6,  rotateRatio = 1)
 
 # Color Vector
-
+?wordcloud2
 colorVec = rep(c('red', 'skyblue'), length.out=nrow(demoFreq))
 wordcloud2(demoFreq, color = colorVec, fontWeight = "bold")
 

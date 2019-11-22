@@ -10,10 +10,11 @@ download.file(url="http://curl.haxx.se/ca/cacert.pem",destfile="cacert.pem")
 
 #https://apps.twitter.com/   create developer account here to use ur own keys
 #different for each account
-consumerKey="uRDuync3BziwQnor1MZFBKp0x"
-consumerSecret="t8QPLr7RKpAg4qa7vth1SBsDvoPKawwwdEhNRjdpY0mfMMdRnV"
-AccessToken="14366551-Fga25zWM1YefkTb2TZYxsrx2LVVSsK0uSpF08sugW"
-AccessTokenSecret="3ap8BZNVoBhE2GaMGLfuvuPF2OrHzM3MhGuPm96p3k6Cz"
+
+consumerKey="sDToDBULOI4wokzrVEiHPEi7o"
+consumerSecret="w3sjSpmUOh9JglcHth9gCNB2ur4MElgVbL0ayhXBNWyFDIyAWf"
+AccessToken="14366551-3sCiFAUo8Gj72FaxzQ0kWGG4NFvI0BxWAXUbpYT9l"
+AccessTokenSecret="mZf2xtm2Y0O0vj8KSUpD09TccYb6ul6CnrbNKzdbkWZwh"
 
 #Common for all accounts except the keys
 

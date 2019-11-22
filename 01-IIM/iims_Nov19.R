@@ -111,3 +111,84 @@ sub5 = trunc(rnorm(10,mean=60, sd=10))
 students2 = data.frame(rollno, sub1, sub2, sub3, sub4, sub5)
 students2
 melt(data=students2, id.vars = 'rollno')
+
+
+
+
+
+
+#Missing Values
+
+#identified by NA
+
+x = c(3,4,NA, 4,2,NA)
+x
+
+is.na(x)
+sum(is.na(x))
+mean(x)
+mean(x, na.rm=T)
+x[is.na(x)]
+x[is.na(x)] = mean(x, na.rm=T)
+x
+
+library(VIM)
+sleep
+head(sleep)
+dim(sleep)
+str(sleep)
+summary(sleep)
+is.na(sleep)
+sum(is.na(sleep))
+colSums(is.na(sleep))    
+rowSums(is.na(sleep))
+complete.cases(sleep)
+head(sleep)
+sleep[complete.cases(sleep),]
+sleep[!complete.cases(sleep),]
+df = sleep
+colSums(is.na(df))
+df$Dream
+df$Dream[ is.na(df$Dream)] = mean(df$Dream, na.rm=T)
+df$Dream
+
+
+
+x=1:100
+x
+quantile(x)
+x = rnorm(100, mean=60, sd=10)
+x
+sort(x)
+quantile(x)v
+
+
+#------
+#reading from excel
+library(readxl)
+?readxl
+readxl_example()
+readxl_example("clippy.xls")
+xlsx_example <- readxl_example("datasets.xlsx")
+read_excel(xlsx_example)
+excel_sheets(xlsx_example)
+read_excel(xlsx_example, sheet = "chickwts")
+read_excel(xls_example, sheet = 4)
+read_excel(xlsx_example, n_max = 3)  #rows
+read_excel(xlsx_example, range = "C1:E4")
+read_excel(xlsx_example, range = cell_rows(1:4))
+read_excel(xlsx_example, range = cell_cols("B:D"))
+read_excel(xlsx_example, range = "mtcars!B1:D5")
+#https://readxl.tidyverse.org/
+read_excel(file.choose(), sheet=1)
+
+
+iris_xl <- readxl_example("datasets.xlsx") %>% 
+  read_excel(sheet = "iris") %>% 
+  write_csv("iris-raw.csv")
+#https://readxl.tidyverse.org/articles/articles/readxl-workflows.html
+
+#check libraries to be loaded
+path <- readxl_example("datasets.xlsx")
+path %>%   excel_sheets() %>%   set_names() %>% 
+  purr::map(read_excel, path = path)

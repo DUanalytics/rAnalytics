@@ -7,12 +7,12 @@ library(wordcloud2)
 
 # have a look to the example dataset
 head(demoFreq)
+par(mar = c(1, 1, 1, 1))
 wordcloud2(demoFreq, size=1)
-?wordcloud2
 #create your set of words and freq
-df = data.frame(word=c('cbap','cmap','iim','imt','calcutta'),freq=c(20,23,15,10,13))
+df = data.frame(word=c('IIMS','IIMK','IIMKPV','IIMA','IIMC'),freq=c(70,13,35,40,21))
 df
-wordcloud2(df)
+wordcloud2(df, size = 1)
 
 
 
@@ -45,3 +45,4 @@ row.names(df2) = word
 head(df2)
 wordcloud2(df2)
 wordcloud2(df2, color = ifelse(df2[, 2] > 30, 'red', 'skyblue'))
+

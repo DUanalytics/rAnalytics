@@ -50,8 +50,11 @@ head(df)
 
 #Method for word cloud
 library(wordcloud)
+par(mar = c(1, 1, 1, 1))
 wc1 = wordcloud(df$word, df$freq, random.order=T)
+par(mar = c(1, 1, 1, 1))
 wc2 = wordcloud(df$word, df$freq, random.order=F, colors = topo.colors(10))
+par(mar = c(1, 1, 1, 1))
 wc3 = wordcloud(df$word, df$freq, scale=c(4,.1), min.freq=2, max.words=50,  random.order=F)
 wc4 = wordcloud(df$word, df$freq, scale=c(4,.1), random.order=F)
 
