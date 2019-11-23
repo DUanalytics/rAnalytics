@@ -27,3 +27,4 @@ x
 lp.transport(x, "min" , rep("==",4) , rep(1,4) , rep(">=",3) , rep(1,3)) 
 lp.transport(x, "min" , rep("==",4) , rep(1,4) , rep(">=",3) , rep(1,3) )$solution
 lp.transport(x, "min" , rep("==",4) , rep(1,4) , rep(">=",3) , rep(1,3) )$object
+

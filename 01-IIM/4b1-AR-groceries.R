@@ -5,19 +5,19 @@ library(arulesViz) #install first
 library(datasets)  # no need to install, just load it reqd for Groceries
 data('Groceries') #different format - transaction format
 Groceries
-
-
 #Structure of Groceries
 str(Groceries)
 Groceries
-arules::LIST(Groceries[1:6])  #another view
-arules::inspect(Groceries[1:5])
-
+arules::LIST(Groceries[1:3])  #another view
+arules::inspect(Groceries[1:3])
+arules::inspect(Groceries[c(1000,5000,9000)])
+arules::inspect(Groceries[sample(1:nrow(Groceries), size=3)])
+nrow(Groceries)
 #Find Frequent Itemset
 #.01 * 9835; A + B + C = 3 items, A + B + C + D : 4 items
 frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5))
 #frequentItems = eclat (Groceries, parameter = list(minlen= 3))
-inspect(frequentItems[1:5])
+inspect(frequentItems[1:3])
 frequentItems
 inspect(frequentItems[])
 #inspect(frequentItems[100:122])
@@ -33,13 +33,14 @@ abline(h=0.15)
 
 # Create rules and the relationship between items
 #parameters are min filter conditions 
+options(digits=2)#output decimal places to 2 digits
 rules = apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5, minlen=2))
 rules
-inspect (rules[1:15])
+inspect (rules[1:5])
 #Sort Rules by confidence, lift and see the data
 rulesc <- sort (rules, by="confidence", decreasing=TRUE)
 inspect(rulesc[1:5])
-rulesl <- sort (rules, by="lift", decreasing=TRUE)
+rulesl <- sort (rules, by="lift", decreasing=T)
 inspect (rulesl[1:5])
 #which items have strong confidence and lift 
 
@@ -52,7 +53,7 @@ inspect(rules2[1:15])
 
 #Find out what events were influenced by a given event - from already created rules
 subset1 = subset(rules2, subset=rhs %in% "whole milk")
-inspect(subset1) # rhs has milk
+inspect(subset1[1:5]) # rhs has milk
 subset1 = subset(rules2, subset=rhs %in% 'bottled beer' )
 inspect(subset1) #rhs has beer
 #inspect(rules2)

@@ -181,7 +181,9 @@ read_excel(xlsx_example, range = cell_cols("B:D"))
 read_excel(xlsx_example, range = "mtcars!B1:D5")
 #https://readxl.tidyverse.org/
 read_excel(file.choose(), sheet=1)
-
+read_excel(file.choose(), sheet='IIMK')
+read_excel(file.choose(), sheet='IIMKPV')
+read_excel('C:\\Users\\du\\Documents\\CBAP.xlsx',sheet=2)
 
 iris_xl <- readxl_example("datasets.xlsx") %>% 
   read_excel(sheet = "iris") %>% 
