@@ -15,7 +15,7 @@ summary(lm(mpg ~ hp + wt + qsec, data=mtcars))
 
 
 #library(olsrr)
-fit = lm(mpg ~ disp + hp + wt + qsec, data = train)
+fit = lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
 k = ols_step_all_possible(fit)
 plot(k)
 k

@@ -74,4 +74,94 @@ barplot(table(grades2))
 
 #dplyr----
 library(dplyr)
+df= mtcars
+df[,c('cyl','vs','am','gear','carb')] = lapply(df[,c('cyl','vs','am','gear','carb')], factor)
+str(df)
+#find mean mpg & wt wrt to each gear & cyl type
+df %>% group_by(cyl, gear) %>% summarise(meanWt = mean(wt, na.rm=T), meanMPG = mean(mpg, na.rm=T), maxHP = max(hp), min(wt), max(wt), n())
+df %>% filter(mpg > 25)
+df %>% filter(mpg > 25 & gear %in% c(4))
+
 df
+#ggplots
+ggplot(df, aes(x=wt, y=mpg)) + geom_point()
+ggplot(df, aes(x=wt, y=mpg)) + geom_point(aes(color=am))
+ggplot(df, aes(x=wt, y=mpg)) + geom_point(aes(color=am, size=hp))
+ggplot(df, aes(x=wt, y=mpg)) + geom_point(aes(color=am, size=hp, shape=carb))
+
+df %>% group_by(cyl, gear)  %>% summarise(CNT = n())
+ggplot(df %>% group_by(cyl, gear)  %>% summarise(CNT = n()), aes(x=cyl, y=CNT, fill=gear)) + geom_bar(stat='identity')
+ggplot(df %>% group_by(cyl, gear)  %>% summarise(CNT = n()), aes(x=cyl, y=CNT, fill=gear)) + geom_bar(stat='identity', position= position_dodge2(.7)) + geom_text(aes(label=CNT), position=position_dodge2(.7))
+
+ggplot(df %>% group_by(cyl, gear, carb, am)  %>% summarise(CNT = n()), aes(x=cyl, y=CNT, fill=gear)) + geom_bar(stat='identity', position= position_dodge2(.7)) + geom_text(aes(label=CNT), position=position_dodge2(.7)) + facet_grid(carb ~ am, scale='free')
+
+
+ggplot(df, aes(x='', y=mpg)) + geom_boxplot()
+ggplot(df, aes(x=gear, y=mpg, fill=gear)) + geom_boxplot()
+ggplot(df, aes(x=gear, y=mpg, fill=gear)) + geom_boxplot() + facet_grid(am ~ cyl)
+
+#simple linear regression
+
+women
+head(women)
+plot(women)
+cor(women)
+cov(women$height, women$weight)
+cor(women$height, women$weight)
+
+model = lm(weight ~ height, data = women)
+model
+summary(model)
+range(women$height)
+residuals(model)
+plot(model)
+
+predict(model, new=data.frame(height=77))
+-87 + 3.45 * 77
+
+#mtcars
+head(mtcars)
+model2 = lm(mpg ~ wt + hp + qsec, data = mtcars)
+summary(model2)
+model3 = lm(mpg ~ wt , data = mtcars)
+
+
+
+#load the data
+#missing Values
+#correlation between IV
+#form Linear Model
+#Check for Model Summary - F Stats, R2, Coeff P value
+#check for assumptions
+#predict & find accuracy
+summary(model3)
+
+
+#missing values
+
+x = c(3,5,4,5)
+x
+mean(x)
+x1 = c(4,5, ,6)
+x2 = c(5,5,NA,20)
+x2
+mean(x2)
+mean(x2, na.rm=T)
+is.na(x2)
+sum(is.na(x2))
+
+x2[is.na(x2)] = mean(x2, na.rm=T)
+x2
+library(VIM)
+data(sleep)
+str(sleep)
+summary(sleep)
+names(sleep)
+is.na(sleep$Dream)
+sum(is.na(sleep$Dream))
+colSums(is.na(sleep))
+rowSums(is.na(sleep))
+complete.cases(sleep)
+sleep[complete.cases(sleep),]
+
+x3

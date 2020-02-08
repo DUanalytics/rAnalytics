@@ -5,7 +5,7 @@
 head(mtcars)
 rownames(mtcars)
 write.csv(mtcars, "./data/mtcarsF.csv", row.names=F) #without rownames
-write.csv(mtcars, "./data/mtcarsT.csv", row.names=T) #without rownames
+write.csv(mtcars, "./data/mtcarsT.csv", row.names=T) #with rownames
 
 head(iris)
 write.csv(iris, "./data/irisF.csv", row.names=F) #without rownames
@@ -48,10 +48,14 @@ head(read_txt)
 #Google Sheets-----
 library(gsheet) #install it#
 #install.packages('gsheet')
-library(gsheet)
 url_gsheet = "https://docs.google.com/spreadsheets/d/1QogGSuEab5SZyZIw1Q8h-0yrBNs1Z_eEBJG7oRESW5k/edit#gid=107865534"
 df_gsheet = as.data.frame(gsheet2tbl(url_gsheet))
 head(df_gsheet)
+
+myurl="https://docs.google.com/spreadsheets/d/1LpZOqb-1JiitLQ_MVd6fJYjNeSXECYDZkeKV3mojr2I/edit#gid=2074844644"
+my_gsheet = as.data.frame(gsheet2tbl(myurl))
+head(my_gsheet)
+
 
 url2 = "https://docs.google.com/spreadsheets/d/16KwkNnX6QAO23c03sCnzCElp3nRWfCp0g9tKCcKETsk/edit#gid=0"
 newdata = as.data.frame(gsheet2tbl(url2))
@@ -62,11 +66,9 @@ head(newdata)
 # first row contains variable names
 #C:\Program Files\Java\jre1.8.0_221
 Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_221')
-library(rJava)
 library(xlsx)
-write.xlsx2(mtcars, file='./data/iimS.xlsx', sheetName = 'mtcars1', row.names=F, append=T)
-
-write.xlsx2(mtcars, file='./data/mtcars.xlsx', sheetName = 'mtcars1', row.names=F, append=T)
+library(rJava)
+write.xlsx2(mtcars, file='./data/mtcars.xlsx', sheetName = 'mtcars1', row.names=F, append=F)
 df_excel1 = read.xlsx( "./data/iimS.xlsx", 1)
 df_excel1
 

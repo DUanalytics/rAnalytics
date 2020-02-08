@@ -1,3 +1,5 @@
+#new Twitter
+#Learning Business Analytics  #businessanalytics   using R  @R_Programming  at @IIMBodhGaya  with @curtisakshay  by @henryharvin_in 
 
 # load twitter library - the rtweet library is recommended now over twitteR
 library(rtweet)
@@ -26,14 +28,17 @@ twitter_token <- create_token(
 #check token
 get_token()
 #search will Returns Twitter statuses matching a user provided search query. ONLY RETURNS DATA FROM THE PAST 6-9 DAYS. To return more than 18,000 statuses in a single call, set "retryonratelimit" to TRUE.
-
-searchString1 = '#sirmaur'   # change this to see others eg analytics...
+#DelhiPolls2020
+searchString1 = '#DelhiElection'   # change this to see others eg analytics...
 ## search for 50 tweets using the #sirmaur hashtag
 tweets1 <- search_tweets(q = searchString1, n = 50)
 # view the first 3 rows of the dataframe
 head(tweets1[1:5], n = 3)
+tail(tweets1[1:5], n = 3)
+tweets1$text
 names(tweets1)  #variable names
 tweets1$text  #tweet
+tweets1[1]
 #https://twitter.com/hashtag/sirmaur?lang=en   #see tweets here
 
 # find recent tweets but ignore retweets 
@@ -44,7 +49,7 @@ head(tweets1B[1:5], n = 2)
 #screen name : who tweeted
 head(tweets1B$screen_name)
 unique(tweets1B$screen_name)
-
+tweets1B[1, 'text']
 # who are the users tweeting with searchString
 users1 <- search_users(searchString1, n = 20)
 users1[1:5]
