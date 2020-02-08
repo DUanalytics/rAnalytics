@@ -1,5 +1,7 @@
 #Twitter 1 - Configure Tweets and Download them
 #@dupadhyaya  #Working using my Keys
+#---Learning Business Analytics  #businessanalytics   using R  @R_Programming  at @IIMBodhGaya  with @curtisakshay  by @henryharvin_in 
+
 #Load libraries
 library("curl")
 library("twitteR")
