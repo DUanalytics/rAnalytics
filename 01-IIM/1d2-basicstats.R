@@ -16,7 +16,7 @@ quantile(x)
 quantile(x,seq(.1,1,by=.1)) #decile
 quantile(x,seq(.01,1,by=.01)) #percentile
 
-library(e1071)                    # load e1071 
+ccdlibrary(e1071)                    # load e1071 
 
 plot(density(x))    #density plot
 e1071::skewness(x)                # apply the skewness 
@@ -32,3 +32,4 @@ stem(x)
 library(fdth)  #fast way of creating FT
 ftable1 = fdt(x)
 ftable1
+

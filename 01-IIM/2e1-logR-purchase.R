@@ -49,7 +49,7 @@ cbind(test_set2, prob_pred2)
 
 # Predicting the Test set results from testset
 head(test_set)
-prob_pred = predict(logitmodel1, type = 'response', newdata = test_set)
+prob_pred = predict(logitmodel2, type = 'response', newdata = test_set)
 summary(prob_pred)
 head(cbind(test_set,prob_pred ),10)
 
@@ -66,4 +66,6 @@ caret::confusionMatrix(cm)
 names(dataset)
 #predict binary classification
 
-
+#84% accuracy in predict whether customer will purchase the product on the basis of IV variables - age & salary
+coef(logitmodel1)
+coef(logitmodel2)

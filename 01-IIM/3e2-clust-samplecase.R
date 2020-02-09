@@ -21,3 +21,7 @@ k2$centers
 k2a = kmeans(marks, centers=c(50,70))
 k2a
 k2a$centers
+
+#create marks of students
+#perform clustering to group students with similar marks
+

@@ -47,9 +47,7 @@ train <- mtcars[train_ind, ]
 test <- mtcars[-train_ind, ]
 
 # -----
-require(caTools)
 library(caTools)
-?require
 set.seed(101) 
 sample = sample.split(mtcars$am, SplitRatio = .75)
 sample
@@ -74,6 +72,9 @@ testing
 table(training$am)
 table(testing$am)
 
+
+#data partition is used for modeling when you want to divide data in to parts - Train and Test.
+#caret package is most popular
 
 
 
