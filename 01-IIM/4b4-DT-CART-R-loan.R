@@ -1,5 +1,3 @@
-
-
 #Decision Tree
 #(https://rpubs.com/fabiorocha5150/decisiontreemodel)
 

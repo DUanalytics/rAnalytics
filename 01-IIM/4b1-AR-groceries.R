@@ -15,11 +15,12 @@ arules::inspect(Groceries[sample(1:nrow(Groceries), size=3)])
 nrow(Groceries)
 #Find Frequent Itemset
 #.01 * 9835; A + B + C = 3 items, A + B + C + D : 4 items
-frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5))
+frequentItems = eclat(Groceries, parameter = list(supp = 0.01, minlen= 3, maxlen = 3))
 #frequentItems = eclat (Groceries, parameter = list(minlen= 3))
-inspect(frequentItems[1:3])
+inspect(frequentItems[1:3])   #correct lib to used
 frequentItems
-inspect(frequentItems[])
+inspect(frequentItems[])  #inspect for printing the itemssets
+options(digits=3)
 #inspect(frequentItems[100:122])
 #Descending Sort frequent items by count : 1 to 25 itemsets
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
@@ -79,9 +80,8 @@ inspect(subset2)
 plot(subset1[1:2]) 
 plot(subset1[1:2], measure=c("support", "lift"), shading="confidence")
 #change the axis
-plot(rules2[1:100], measure=c("support", "lift"), shading="confidence")
+plot(rules2[1:100], measure=c("support", "lift"), jitter=0,shading="confidence")
 #
-
 
 #Find what factors influenced an event ‘X’ - create fresh Rules
 rules3 = apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.7), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))

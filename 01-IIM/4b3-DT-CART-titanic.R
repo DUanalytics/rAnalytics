@@ -15,18 +15,19 @@ library(rpart.plot)
 str(data)
 #Decision Tree
 names(data)
-table(data$survived)
+table(data$Survived)
 str(data)
-fit <- rpart(survived ~ ., data = data, method = 'class')
+data$Pclass = factor(data$Pclass)
+fit <- rpart(Survived ~ ., data = data, method = 'class')
 fit
 rpart.plot(fit, extra = 104, cex=.8,nn=T)  #plot
 head(data)
 printcp(fit) #select complexity parameter
-prunetree2 = prune(fit, cp=.015)
+prunetree2 = prune(fit, cp=.018)
 rpart.plot(prunetree2, cex=.8,nn=T, extra=104)
 prunetree2
 nrow(data)
-table(data$survived)
+table(data$Survived)
 # predict for Female, pclass=3, siblings=2, what is the chance of survival
 
 #Predict class category or probabilities
@@ -34,7 +35,7 @@ table(data$survived)
 predict(prunetree2, newdata=testdata, type='class')
 predict(prunetree2, newdata=testdata, type='prob')
 str(data)
-testdata2 = data.frame(pclass=2, sex=factor('male'), age=5, sibsp=2)
+testdata2 = data.frame(Pclass=factor(2), Sex=factor('male'), Age=15, SibSp=2)
 testdata2
 predict(prunetree2, newdata = testdata2, type='class')
 predict(prunetree2, newdata = testdata2, type='prob')
