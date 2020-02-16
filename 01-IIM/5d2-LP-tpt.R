@@ -3,11 +3,11 @@
 #https://cran.r-project.org/web/packages/lpSolve/lpSolve.pdf
 library(lpSolve)
 
-(costs <- matrix (c(3,1,5,2,5,4),ncol=2))
-row.signs <- c("<", "<", "<")
-row.rhs <- c(45, 60, 35)
-col.signs <- rep (">", 2)
-col.rhs <- c(50, 60)
+(costs <- matrix (c(3,1,5,2,5,4),ncol=2))  #cost fm F to W
+(row.signs <- c("<", "<", "<"))
+(row.rhs <- c(45, 60, 35)) #factories product
+(col.signs <- rep (">", 2))
+(col.rhs <- c(50, 60))  #warehouse demand
 #edit(costs)
 # Run
 lp.transport (costs, "min", row.signs, row.rhs, col.signs, col.rhs)
