@@ -95,9 +95,58 @@ set.seed(55)
 table(grade)
 prop.table(table(grade))
 sapply(list(rollno, name, age, marks, gender, grade), length)
-(students = data.frame(rollno, name, age, marks, gender, grade))
+(students = data.frame(rollno, name, age, marks, gender, grade, stringsAsFactors = F ))
 
 write.csv(students,'data/students.csv' , row.names = F )
 
 df1 = read.csv('data/students.csv')
 df1
+
+df2 = read.csv('https://raw.githubusercontent.com/DUanalytics/rAnalytics/master/data/students.csv')
+df2
+
+df3 = read.csv(file.choose())
+df3
+
+students
+#install.packages("dplyr")
+
+
+class(students)
+summary(students)
+str(students)
+students$gender = factor(students$gender)
+str(students)
+students$grade = factor(students$grade, ordered=T, levels=c('Ex','Sat','Good'))
+str(students)
+table(students$gender)
+table(students$grade)
+
+students
+library(dplyr)  #loading library
+
+students %>% group_by(gender)  %>% tally()
+students %>% group_by(gender)  %>% summarise(mean(age), n(), min(marks), max(marks))
+students %>% group_by(gender, grade)  %>% summarise(mean(age))
+
+
+
+#dplyr - mtcars
+library(dplyr)
+#library(tidyverse)
+#Filter----
+mtcars
+filter(mtcars, cyl == 8)
+filter(mtcars, cyl < 6)
+
+# Multiple criteria
+filter(mtcars, cyl < 6 & vs == 1)
+filter(mtcars, cyl < 6 | vs == 1)
+
+# Multiple arguments are equivalent to and
+filter(mtcars, cyl < 6, vs == 1)
+
+
+filter(mtcars, row_number() == 1L)
+filter(mtcars, row_number() == n())
+filter(mtcars, between(row_number(), 5, n()-2))
