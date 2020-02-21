@@ -237,15 +237,46 @@ library(reshape2)
 
 (rollno = paste('IIM',1:10, sep='_'))
 (name = paste('SName',1:10, sep=' '))
-(gender = sample(c('M','F'), size=10, replace=T))
+(gender = sample(c('M','F'), size=10, replace=T, prob=c(.7,.3)))
 (program = sample(c('BBA','MBA'), size=10, replace = T))
 (marketing = trunc(rnorm(10, mean=60, sd=10)))
+(operations = trunc(rnorm(10, mean=70, sd=5)))
 (finance = trunc(rnorm(10, mean=55, sd=12)))
-students <- data.frame(rollno, name, gender, program, marketing, finance, stringsAsFactors = F)
+students <- data.frame(rollno, name, gender, program, marketing, finance, operations, stringsAsFactors = F)
 students
 head(students)
+#students %>% group_by(gender, program)  %>% summarise(mean(marketing), mean(finance), mean(operations))
 
-(meltSum1 <- melt(students, id.vars=c('rollno','name')))
+(meltSum1 <- melt(students, id.vars=c('rollno','name', 'gender','program'), variable.name = 'subject', value.name ='marks'))
+meltSum1
+head(meltSum1)
+sum2 <- meltSum1 %>% group_by(program, gender, subject) %>% summarise(MeanMarks = mean(marks))
+head(sum2)
+ggplot(data=sum2, aes(x=gender, y=MeanMarks, fill=gender)) + geom_bar(stat='identity') + facet_grid(program ~ subject)
+#
+
+
+
+students
+head(students, n=2)
+students %>% group_by(gender) %>% summarise(COUNT = n())
+ggplot(students %>% group_by(gender) %>% summarise(COUNT = n()), aes(x=gender, y=COUNT, fill=gender)) + geom_bar(stat='identity') + geom_text(aes(label=COUNT)) + labs(title='Gender Wise Count')
+#stacked bar
+ggplot(students %>% group_by(program, gender) %>% summarise(COUNT = n()), aes(x=gender, y=COUNT, fill=program)) + geom_bar(stat='identity') + geom_text(aes(label=COUNT)) + labs(title='Gender Wise - Program Count')
+#side by side
+ggplot(students %>% group_by(program, gender) %>% summarise(COUNT = n()), aes(x=gender, y=COUNT, fill=program)) + geom_bar(stat='identity',position = position_dodge2(.7)) + geom_text(aes(label=COUNT), position = position_dodge2(.7)) + labs(title='Gender Wise - Program Count')
+#Subject - Program - Gender - Mean Marks 
+names(students)
+names(meltSum1)
+head(meltSum1)
+ggplot(meltSum1 %>% group_by(program, gender, subject) %>% summarise(meanMarks = round(mean(marks))), aes(x=gender, y=meanMarks, fill=program)) + geom_bar(stat='identity',position = position_dodge2(.7)) + geom_text(aes(label=meanMarks), position = position_dodge2(.7)) + labs(title='Subject - Program - Gender - Mean Marks ') + facet_grid(~ subject)
+
+ggplot(mtcars, aes(x=wt, y=mpg, size=hp, color=factor(gear), shape=factor(am))) + geom_point()
+#
+ggplot(students, aes(x=gender, y=..count..)) + geom_bar(stat='count')
+
+
+#
 (dcastSum1 <- dcast(meltSum1, rollno + name ~ variable, value.var='value'))
 ?recast
 recast(data=students,  gender ~ variable, fun.aggregate=mean )
