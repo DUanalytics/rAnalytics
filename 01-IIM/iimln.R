@@ -150,3 +150,102 @@ filter(mtcars, cyl < 6, vs == 1)
 filter(mtcars, row_number() == 1L)
 filter(mtcars, row_number() == n())
 filter(mtcars, between(row_number(), 5, n()-2))
+
+
+#day2:21Feb20------
+library(dplyr)
+mtcars
+table(mtcars$cyl)
+summary(mtcars$cyl)
+mtcars %>% group_by(cyl)  %>% tally()
+mtcars %>% group_by(cyl)  %>% summarise(COUNT = n())
+xtabs( ~ cyl, data=mtcars)
+ftable(mtcars$cyl)
+#gear & cyl
+table(mtcars$cyl, mtcars$gear)
+table(mtcars$cyl, mtcars$gear, dnn=c('cylinder','gear'))
+mtcars %>% group_by(cyl, gear) %>% tally()
+mtcars %>% group_by(cyl, gear) %>% summarise(COUNT = n())
+mtcars %>% group_by(cyl, mpg) %>% summarise(COUNT = n()) %>% as.data.frame()
+
+xtabs(  ~ cyl + gear, data=mtcars)
+ftable(mtcars$cyl, mtcars$gear)
+table(mtcars$cyl, mtcars$gear, mtcars$am, dnn=c('Cyl','Gear','AutoManual'))
+
+df = mtcars
+head(df)   
+tail(df)
+df$am= ifelse(df$am==0, 'Auto', 'Manual')
+df
+mtcars %>% mutate(TxType = ifelse(am==0, 'Auto', 'Manual'))
+mtcars %>% mutate(TxType = ifelse(am==0, 'Auto', 'Manual')) %>% group_by(TxType) %>% summarise(COUNT = n())
+mtcars                  
+df = mtcars
+df$mpg
+df[,'mpg']
+df
+head(df)
+df = df %>% mutate(TxType = ifelse(am==0, 'Auto', 'Manual'))
+head(df)
+#increase mileage by 10%
+df$mpg * 1.1
+#add mpg + wt into new column MPGWT
+df$mpg  + df$wt
+df$MPGWT = df$mpg * 1.1  + df$wt
+head(df)
+df
+#top 2 cars from mpg from each gear type : use group_by & top_n
+?top_n
+df %>% group_by(gear) %>% top_n(n=2, wt=mpg) %>% select(gear, mpg)
+df %>% group_by(gear) %>% arrange(-mpg)  %>% select(gear, mpg)
+df %>% group_by(gear) %>% top_n(n=2, wt=-mpg) %>% select(gear, mpg)
+
+#list out details of any 2 cars picked randomly: then do 25% of the cars
+df %>% sample_n(2)
+df %>% sample_frac(.25)
+#sort on mpg
+df %>% sample_frac(.25)  %>%  arrange(mpg)
+#ascending gear, descending mpg
+df %>% sample_frac(.25)  %>%  arrange(gear, desc(mpg))
+
+sort(df$mpg)
+df[ order(df$mpg), ]
+df %>% slice(1)
+df %>% slice(10:15)
+
+#find mean of mpg, wt, hp, disp for each gear type
+df %>% group_by(gear)  %>% summarise_at(c('mpg','wt', 'hp','disp'),c(mean))
+df %>% group_by(gear)  %>% summarise_at(c('mpg','wt', 'hp','disp'),c(mean, median))
+df %>% select(gear, mpg, wt, hp,disp) %>% group_by(gear) %>% summarise_all(mean)
+#find min and max of wt for each gear type
+df %>% select(mpg, wt, gear) %>% group_by(gear) %>% summarise_each(c(min, max))
+
+
+#graphs----
+hist(df$mpg)
+barplot(table(df$gear), col=1:3)
+L1 <- paste(round(table(df$gear)/nrow(df) * 100),'%')
+
+pie(table(df$gear), labels=c('gear3','G4','G5'))
+pie(table(df$gear), labels=L1, col=1:3)
+plot(df$wt, df$mpg)
+
+library(ggplot2)
+library(reshape2)
+#install.packages('ggplot2')  #this is in simple R
+#install.packages('reshape2')
+
+(rollno = paste('IIM',1:10, sep='_'))
+(name = paste('SName',1:10, sep=' '))
+(gender = sample(c('M','F'), size=10, replace=T))
+(program = sample(c('BBA','MBA'), size=10, replace = T))
+(marketing = trunc(rnorm(10, mean=60, sd=10)))
+(finance = trunc(rnorm(10, mean=55, sd=12)))
+students <- data.frame(rollno, name, gender, program, marketing, finance, stringsAsFactors = F)
+students
+head(students)
+
+(meltSum1 <- melt(students, id.vars=c('rollno','name')))
+(dcastSum1 <- dcast(meltSum1, rollno + name ~ variable, value.var='value'))
+?recast
+recast(data=students,  gender ~ variable, fun.aggregate=mean )
