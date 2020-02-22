@@ -1,3 +1,5 @@
+#IIM Sirmaur  - Nov 2019
+
 #Case Study - Manufacturing Coy
 
 library(gsheet)
