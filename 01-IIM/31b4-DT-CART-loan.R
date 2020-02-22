@@ -1,9 +1,10 @@
-#Decision Tree
+#Decision Tree - Not completed
 #(https://rpubs.com/fabiorocha5150/decisiontreemodel)
 
 url='https://raw.githubusercontent.com/fabiorcampos/Bank-Marketing/master/data/bank-full.csv'
 data= read.table(url,sep=';', header = T )
 head(data)
+dim(data)
 str(data)
 names(data)
 df1 = data
