@@ -468,3 +468,212 @@ range(df2$price) ; range(df2$promotion)
 predict(model3, newdata=ndata3, type='response')
 plot(model3)
 
+#decision trees-----
+# Decision Tree - Classification
+#we want predict for combination of input variables, is a person likely to survive or not
+
+#import data from online site
+path = 'https://raw.githubusercontent.com/DUanalytics/datasets/master/csv/titanic_train.csv'
+titanic <- read.csv(path)
+head(titanic)
+names(titanic)
+data = titanic[,c(2,3,5,6,7)]  #select few columns only
+head(data)
+dim(data)
+#load libraries
+library(rpart)
+library(rpart.plot)
+str(data)
+#Decision Tree
+names(data)
+table(data$Survived)
+prop.table(table(data$Survived))
+
+str(data)
+data$Pclass = factor(data$Pclass)
+fit <- rpart(Survived ~ ., data = data, method = 'class')
+fit
+rpart.plot(fit, extra = 104, cex=.8,nn=T)  #plot
+head(data)
+printcp(fit) #select complexity parameter
+prunetree2 = prune(fit, cp=.017544)
+rpart.plot(prunetree2, cex=1,nn=T, extra=104)
+prunetree2
+nrow(data)
+table(data$Survived)
+# predict for Female, pclass=3, siblings=2, what is the chance of survival
+
+#Predict class category or probabilities
+(testdata = sample_n(data,2))
+predict(prunetree2, newdata=testdata, type='class')
+predict(prunetree2, newdata=testdata, type='prob')
+str(data)
+testdata2 = data.frame(Pclass=factor(2), Sex=factor('male'), Age=15, SibSp=2)
+testdata2
+predict(prunetree2, newdata = testdata2, type='class')
+predict(prunetree2, newdata = testdata2, type='prob')
+
+#Use decision trees for predicting
+#customer is likely to buy a product or not with probabilities
+#customer is likely to default on payment or not with probabilities
+#Student is likely to get selected, cricket team likely to win etc
+
+#Imp steps
+#select columns for prediction
+#load libraries, create model y ~ x1 + x2 
+#prune the tree with cp value
+#plot the graph
+#predict for new cases
+
+#rpart, CART, classification model
+#regression decision = predict numerical value eg sales
+
+#Clustering ------
+set.seed(1234)
+(marks1 = trunc(rnorm(n=30, mean=70, sd=8)))
+sum(marks1)
+df5 <- data.frame(marks1=marks1)
+head(df5)
+#
+km3 <- kmeans(df5, centers=3)
+attributes(km3)
+km3$cluster
+km3$centers
+km3$size
+sort(df5$marks1)
+cbind(df5, km3$cluster)  #which row which cluster
+df5$cluster = km3$cluster
+head(df5)
+df5 %>% arrange(cluster)
+dist(df5[1:5,])
+#-----------------------------------------
+set.seed(1234)
+(marks1 = trunc(rnorm(n=30, mean=70, sd=8)))
+(marks2 = trunc(rnorm(n=30, mean=120, sd=10)))
+df6 <- data.frame(marks1, marks2)
+head(df6)
+#
+km3 <- kmeans(df6, centers=5)
+attributes(km3)
+km3$cluster
+km3$centers
+km3$size
+cbind(df6, km3$cluster)  #which row which cluster
+df6$cluster = km3$cluster
+head(df6)
+df6 %>% arrange(cluster)
+df6[1:5,]
+dist(df6[1:5,])
+plot(df6$marks1, df6$marks2, col=df6$cluster)
+
+#scale data and then do clustering
+head(df6)
+(df6B <- scale(df6[, c('marks1','marks2')]))
+head(df6B)
+#
+km3B <- kmeans(df6B, centers=5)
+attributes(km3B)
+km3B$cluster
+km3B$centers
+km3B$size
+cbind(df6B, km3B$cluster)  #which row which cluster
+head(df6)
+df6$newcluster = km3B$cluster
+head(df6)
+df6B %>% arrange(cluster)
+df6[1:5,]
+dist(df6[1:5,])
+plot(df6$marks1, df6$marks2, col=df6$cluster)
+plot(df6$marks1, df6$marks2, col=df6$newcluster)
+
+
+
+
+
+#Factor Extra - hclust
+
+library("factoextra")
+# Compute hierarchical clustering and cut into 4 clusters
+res <- hcut(USArrests, k = 4, stand = TRUE)
+res
+# Visualize
+k_colors = c("#00AFBB","#2E9FDF", "#E7B800", "#FC4E07")
+fviz_dend(res, rect = TRUE, cex = 0.5, k_colors=c('red','green','blue','yellow')  )
+
+# Optimal number of clusters for k-means
+library("factoextra")
+my_data <- scale(USArrests)
+fviz_nbclust(my_data, kmeans, method = "gap_stat")
+
+
+
+#----wordcloud-----
+
+
+#install.packages('wordcloud2')
+library(wordcloud2)
+df = data.frame(word=c('iit','mdi','iim','imt'),freq=c(50,20,23,15))
+df
+par(mar=c(0,0,0,0))
+wordcloud2(df)
+
+head(demoFreq)
+dim(demoFreq)
+par(mar=c(0,0,0,0))
+wordcloud2(demoFreq)
+
+par(mar=c(0,0,0,0))
+wordcloud2(demoFreq, size = 2, color = "random-light", backgroundColor = "grey")
+
+names(demoFreq)
+par(mar=c(0,0,0,0))
+wordcloud2(demoFreq, size = 2, minRotation = -pi/2, maxRotation = -pi/2)
+wordcloud2(demoFreq, size = 2, minRotation = -pi/6, maxRotation = -pi/6,   rotateRatio = 1)
+wordcloud2(demoFreq, size = 2, minRotation = -pi/6, maxRotation = pi/6,    rotateRatio = 0.9)
+par(mar=c(0,0,0,0))
+wordcloud2(demoFreqC, size = 3,  color = "random-light", backgroundColor = "grey")
+wordcloud2(demoFreqC, size = 2, minRotation = -pi/6, maxRotation = -pi/6,  rotateRatio = 1)
+
+# Color Vector
+?wordcloud2
+colorVec = rep(c('red', 'skyblue'), length.out=nrow(demoFreq))
+wordcloud2(demoFreq, color = colorVec, fontWeight = "bold")
+
+wordcloud2(demoFreq, color = ifelse(demoFreq[, 2] > 10, 'red', 'skyblue'))
+
+
+#Example2 -----
+#Word Cloud 2
+
+#(https://www.r-graph-gallery.com/the-wordcloud2-library/)
+
+# library : install it first
+library(wordcloud2) 
+
+# have a look to the example dataset
+head(demoFreq)
+dim(demoFreq)
+str(demoFreq)
+#wordcloud
+wordcloud2(demoFreq, size=1.6)
+head(demoFreq[order(-demoFreq$freq),])
+?wordcloud2
+
+#create your own set of words
+word = c('marketing','consumer', 'dhiraj','price','business','iimkashipur', 'sunder','vignesh', 'jyoti','finance', 'operations')
+freq = c(30,20,15,36,15,13,11,44,13,44,34)
+df1 = data.frame(word, freq)
+#rownames(df1)= word
+head(df1)
+#df1 = head(demoFreq)
+wordcloud2(df1, size=.4)
+?wordcloud2
+# Gives a proposed palette
+wordcloud2(demoFreq, size=1.6, color='random-dark')
+wordcloud2(df1, size=1, color='random-dark')
+
+# or a vector of colors. vector must be same length than input data
+wordcloud2(demoFreq, size=1.6, color=rep_len( c("green","blue"), nrow(demoFreq) ) )
+# Change the background color
+wordcloud2(demoFreq, size=1.6, color='random-light', backgroundColor="black")
+

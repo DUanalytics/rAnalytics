@@ -81,4 +81,6 @@ df_excel2b = read.xlsx( "./data/mtcars.xlsx", 'iris2')
 df_excel2b
 #see the excel sheet in data folder: windows explorer
 
+library(readxl)
+
 #end here

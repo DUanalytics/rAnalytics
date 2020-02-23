@@ -121,3 +121,4 @@ g + geom_point(data=centers, aes(x=height,y=weight, colour=unique(df2$cluster)),
 #https://rstudio-pubs-static.s3.amazonaws.com/309962_f68823cbde484d0bace3fd37ab76482a.html
 
 example(kmeans)
+
