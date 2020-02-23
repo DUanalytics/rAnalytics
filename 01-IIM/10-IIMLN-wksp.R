@@ -360,12 +360,16 @@ mtcars[ index, ]
 dim(mtcars[index, ])
 mtcars[ -index, ]
 
-#pinstall <- c('rpart','rpart.plot', 'caTools', 'caret','arules','arulesViz', 'factoextra', 'dendextend','NbClust', 'cluster','fpc', 'amap','animation', 'gsheet', 'readxl', 'rJava', 'xlsx','wordcloud', 'wordcloud2', 'modeest','fdth','e1071' )
-#tspackages <- c('timeseries','xts','zoo','forecast','TTR','quantmod', 'lubridate','smooth','Mcomp')
-#tmpackages <- c('rtweet',"curl", 'twitterR', 'ROAuth', 'syuzhet')
+#clusterpackages <- c('factoextra', 'dendextend','NbClust', 'cluster','fpc', 'amap','animation')
+#arulepackages <- c('arules','arulesViz')
+#classpackages <- c('rpart','rpart.plot')
+#iepackages <- c('gsheet', 'readxl', 'rJava', 'xlsx')
+#statspackages <- c('modeest','fdth','e1071','caTools', 'caret' )
+#tspackages <- c('timeSeries','xts','zoo','forecast','TTR','quantmod', 'lubridate','smooth','Mcomp')
+#tmpackages <- c('rtweet',"curl", 'twitterR', 'ROAuth', 'syuzhet','wordcloud', 'wordcloud2')
 #lppackages <- c('lpSolve', 'linprog', 'lpSolveAPI')
 
-#install.packages(pinstall)
+#install.packages(pinstall)  #replace pinstall with name of vector of package list
 
 #Multiple Install
 list.of.packages <- plist #substitute plist with name of list of packages
