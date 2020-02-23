@@ -280,3 +280,104 @@ ggplot(students, aes(x=gender, y=..count..)) + geom_bar(stat='count')
 (dcastSum1 <- dcast(meltSum1, rollno + name ~ variable, value.var='value'))
 ?recast
 recast(data=students,  gender ~ variable, fun.aggregate=mean )
+
+
+
+
+#day3 : 23 Feb -----
+(x = c(1,2,4,5))
+sum(x)
+#(x2 = c(1,2,,4, ,5))   #error
+(x2 = c(1,2,NA,4,NA,5))
+sum(x2)  # NA
+sum(x2, na.rm=T) #12
+?sum
+length(x2)
+is.na(x2)
+sum(c(T,F,T,F,T))
+sum(is.na(x2))
+sum(is.na(x2))/length(x2)  #% perc of missing values
+x2
+mean(x2, na.rm=T)
+x2[is.na(x2)]
+x2[c(F,F,T,F,T,T)]
+x2[is.na(x2)] = mean(x2, na.rm=T)
+x2
+
+library(VIM)
+data(sleep)
+sleep
+?sleep
+head(sleep)
+tail(sleep)
+str(sleep)
+dim(sleep)
+length(sleep)
+summary(sleep)
+(x=200:300)
+quantile(x)
+quantile(x, seq(0,1,.25))
+quantile(x, seq(0,1,.1))
+quantile(x, seq(0,1,.01))
+
+head(sleep)
+is.na(sleep)
+sum(is.na(sleep))
+colSums(is.na(sleep))
+rowSums(is.na(sleep))
+complete.cases(sleep)
+sum(complete.cases(sleep))
+sleep[complete.cases(sleep), ]
+sleep[!complete.cases(sleep), ]
+(xy = colSums(is.na(sleep)))
+xy[xy > 0]
+(c1 <- names(xy[xy > 0]))
+sleep[ , c1]
+sleep %>% select(c1) %>% length()
+sleep %>% select(-c1)  %>% length()
+
+`%notin%` <- Negate(`%in%`)
+c2 <- names(sleep) %notin% c1
+sleep[ , c2]
+
+#data partitioning
+(x = trunc(rnorm(100, mean=60, sd=15)))
+set.seed(134)
+s1 <- sample(x, size=70)
+length(s1)
+sum(s1)
+
+s2 <- sample(x, size=.7 * length(x))
+length(s2)
+x
+
+mtcars
+mtcars %>% sample_n(24)
+mtcars %>% sample_frac(.7)
+dim(mtcars); nrow(mtcars)
+(index = sample(1:nrow(mtcars), size=.7 * nrow(mtcars)))
+mtcars[ index, ]
+dim(mtcars[index, ])
+mtcars[ -index, ]
+
+#pinstall <- c('rpart','rpart.plot', 'caTools', 'caret','arules','arulesViz', 'factoextra', 'dendextend','NbClust', 'cluster','fpc', 'amap','animation', 'gsheet', 'readxl', 'rJava', 'xlsx','wordcloud', 'wordcloud2', 'modeest','fdth','e1071' )
+#tspackages <- c('timeseries','xts','zoo','forecast','TTR','quantmod', 'lubridate','smooth','Mcomp')
+#tmpackages <- c('rtweet',"curl", 'twitterR', 'ROAuth', 'syuzhet')
+#lppackages <- c('lpSolve', 'linprog', 'lpSolveAPI')
+
+#install.packages(pinstall)
+
+#Multiple Install
+list.of.packages <- plist #substitute plist with name of list of packages
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+#load if avl, install if not avl---
+#Load if available, install packages if not available in the system & then load
+if (!require("quantmod")) {
+  install.packages("quantmod")
+  library(quantmod)
+}
+#---------------------------------------------
+#data partition
+library(caTools)
