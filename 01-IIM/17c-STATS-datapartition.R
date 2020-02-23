@@ -77,8 +77,9 @@ table(testing$am)
 #caret package is most popular
 
 
-
-
+library(dplyr)
+mtcars %>% group_by(am) %>% sample_n(5)
+mtcars %>% group_by(am) %>% sample_n(.2)
 
 
 

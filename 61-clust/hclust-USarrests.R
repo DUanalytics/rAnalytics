@@ -24,3 +24,4 @@ fviz_dend(res3, rect = TRUE, cex = 0.5,  k_colors = c("#00AFBB","#2E9FDF", "#E7B
 
 #links
 #http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization
+#https://www.analyticsvidhya.com/blog/2019/05/beginners-guide-hierarchical-clustering/

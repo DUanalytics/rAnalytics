@@ -12,6 +12,7 @@ library(NbClust)
 set.seed(1234)
 marks1 = ceiling(runif(20,50,90))
 df1 = data.frame(marks1)
+df1
 #Perform Clustering
 set.seed(1234)
 km1 = kmeans(df1,3,nstart=5)
@@ -27,7 +28,6 @@ attributes(km1)
 # Calculate distances between each point
 #stats::dist(df1$marks1, method = "euclidean")
 m1 = as.matrix(stats::dist(df1$marks1, method = "euclidean"))
-?kmeans
 m1
 rownames(m1) = df1$marks1
 colnames(m1) = df1$marks1
@@ -52,6 +52,7 @@ km1$withinss ; sum(km1$withinss)
 
 #between each cluster centerioids
 km1$betweenss
+km1$centers
 km1$centers
 diff(km1$centers)
 (comb1 = combn(km1$centers,2))
@@ -114,3 +115,9 @@ g= ggplot(data=df2[1:3], aes(x=height, y=weight, color=cluster,size=10 )) + geom
 g
 g + geom_point(data=centers, aes(x=height,y=weight, colour=unique(df2$cluster)), size=67, alpha=.3) + theme(legend.position = "none")
 
+
+
+#links
+#https://rstudio-pubs-static.s3.amazonaws.com/309962_f68823cbde484d0bace3fd37ab76482a.html
+
+example(kmeans)
