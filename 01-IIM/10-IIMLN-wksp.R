@@ -385,3 +385,86 @@ if (!require("quantmod")) {
 #---------------------------------------------
 #data partition
 library(caTools)
+sample = sample.split(Y=mtcars$am, SplitRatio = .7)
+sample
+table(sample)
+prop.table(table(sample))
+(y1= mtcars[sample==T,])  #TRUE set
+y2= mtcars[sample==F,]  #FALSE set
+table(y1$am) ; prop.table(table(y1$am))
+table(y2$am) ; prop.table(table(y2$am))
+
+library(caret)
+(intrain <- createDataPartition(y = mtcars$am, p=.7, list=F))
+train <- mtcars[ intrain, ]
+test <- mtcars[ - intrain, ]
+prop.table(table(train$am)) ; prop.table(table(test$am))
+           
+
+
+#linear regression----
+
+women
+head(women)
+model = lm(weight ~ height, data=women)
+summary(model)
+#y = mx + c
+#weight = 3.45 * height + - 87.51
+plot(x=women$height, y=women$weight)
+abline(model, col=2)
+residuals(model)
+women$weight
+predWt <- predict(model, newdata=women, type='response')
+head(women)
+3.45 * 58 - 87
+cbind(women, predWt, res = women$weight - predWt, res2= residuals(model))
+summary(model)
+sqrt(sum(residuals(model)^2))  #SSE
+
+(ndata = data.frame(height=c(66.5, 75.8)))
+predict(model, newdata=ndata, type='response')
+confint(model)
+
+#case2 : LR -----
+link = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=2023826519"
+library(gsheet)
+df = as.data.frame(gsheet2tbl(link))
+head(df)
+model2 = lm(Y ~ X, data =df)
+plot(df$X, df$Y)
+abline(model2)
+
+#write your inferences
+#R2
+#does model exists
+#coeff values
+#SSE value
+summary(model2)
+resid(model2)
+range(df$X)
+ndata2 = data.frame(X=c(3,4))
+predict(model2, newdata=ndata2, type='response')
+#assumptions 
+plot(model)
+
+
+#MLM - promotion sales
+link2 = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=1595306231"
+
+df2 = as.data.frame(gsheet2tbl(link2))
+head(df2)
+plot(df2$price, df2$sqty)
+plot(df2$promotion, df2$sqty)
+
+model3 <- lm(sqty ~ price + promotion     , data=df2)
+summary(model3)
+plot(model3)
+plot(df2$price, df2$sqty)
+abline(model3, col=2)
+plot(df2$promotion, df2$sqty)
+abline(model3, col=4)
+range(df2$price) ; range(df2$promotion)
+(ndata3 = data.frame(price=c(60, 75), promotion=c(300, 500)))
+predict(model3, newdata=ndata3, type='response')
+plot(model3)
+
