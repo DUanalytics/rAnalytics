@@ -22,3 +22,12 @@ heatmap(mtscaled[cutree(hc.rows,k=2)==2,], Colv=as.dendrogram(hc.cols), scale='n
 
 palette <- colorRampPalette(c('#f0f3ff','#0033BB'))(256)
 heatmap(mtscaled, Colv=F, scale='none', col=palette)
+
+
+
+#
+ClustMTC = kmeans(mtcars[, c('wt', 'mpg')], center=3)
+ClustMTC = kmeans(scale(mtcars), center=3)
+ClustMTC$centers
+plot(x=mtcars$wt, y=mtcars$mpg, col=ClustMTC$cluster)
+mtcars %>% group_by(ClustMTC$cluster) %>% summarise_all(mean)

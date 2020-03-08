@@ -2,7 +2,7 @@
 
 
 #Plot1----
-library(cluster)
+library(cluster)   #plotting
 library(fpc)
 
 data(iris)
@@ -13,9 +13,8 @@ plotcluster(data, km1$cluster)
 
 #Plot2
 # More complex
-clusplot(data, km1$cluster, color=TRUE, shade=TRUE, 
-         labels=2, lines=0)
-
+clusplot(data, km1$cluster, color=TRUE, shade=TRUE, labels=2, lines=0)
+?clusplot
 #plot3
 with(iris, pairs(data, col=c(1:3)[km1$cluster])) 
 

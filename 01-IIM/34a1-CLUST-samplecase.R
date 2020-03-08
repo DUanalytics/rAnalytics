@@ -28,3 +28,14 @@ k2a$centers
 #create marks of students
 #perform clustering to group students with similar marks
 
+head(iris)
+head(mtcars)
+marks
+subject
+subject1 = trunc(rnorm(30, mean=60, sd=15))
+subject1
+scale(subject1)
+cbind(subject1, scale(subject1))
+?scale
+
+scale(mtcars)
