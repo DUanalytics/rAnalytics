@@ -16,7 +16,7 @@ candleChart(SBIN.NS, up.col = "black", dn.col = "red", theme = "white")
 
 #ICICIBANK.NS
 #TATAMOTORS.NS
-getSymbols(c("ICICIBANK.NS", "TATAMOTORS.NS"), src = "yahoo", from = start, to = end)
+quantmod::getSymbols(c("ICICIBANK.NS", "TATAMOTORS.NS"), src = "yahoo", from = start, to = end)
 
 stocks = as.xts(data.frame(SBIN = SBIN.NS[, "SBIN.NS.Close"]))
 stocks

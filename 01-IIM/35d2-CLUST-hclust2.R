@@ -9,6 +9,7 @@ d = dist(nutrient.scaled)
 d  # diagonal matrix with distance values
 head(d)
 rownames(nutrient)
+
 #Perform HClustering-----
 fit.average = hclust(d, method = 'average')
 plot(fit.average, hang=-1, cex=.8, main='Average Linkage Clustering')
@@ -21,8 +22,6 @@ rect.hclust(fit.average, k=2, border='purple')
 plot(fit.average, hang=-1, cex=.8, main='H Clustering')
 rect.hclust(fit.average, h=3, border='blue')
 
-
-
 library('dendextend')
 ## Example:
 dend <- as.dendrogram(hclust(dist(USArrests), "ave"))
@@ -31,6 +30,3 @@ plot(d1) # selective coloring of branches :)
 d2=color_branches(d1,k=5) # auto-coloring 5 clusters of branches.
 plot(d2)
 # More examples are in ?color_branches
-
-
-
