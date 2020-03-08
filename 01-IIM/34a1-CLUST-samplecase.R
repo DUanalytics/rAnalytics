@@ -7,10 +7,12 @@ subject1
 marks = data.frame(subject1)
 head(marks)
 marks
-
+sort(marks$subject1)
 k2 = kmeans(marks, centers=2)
 k2
 k2$size
+k2$iter
+cbind(marks, k2$cluster) #which data row into which cluster
 length(marks[k2$cluster==1,])
 marks[k2$cluster==2,]
 marks[k2$cluster==1,]

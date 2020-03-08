@@ -28,6 +28,7 @@ library(devtools)   #installing from github/dev env
 #data manipulation-----
 library(dplyr)  #summarise
 library(data.table)  #new DS for manipulating large data
+ibrary(tidyverse)  # data manipulation
 
 #linear modeling
 library(olsrr)
@@ -50,14 +51,13 @@ library(arulesViz)
 
 
 #clustering-----
-ibrary(tidyverse)  # data manipulation
 library(cluster)    # clustering algorithms
 library(factoextra) # clustering visualization
 library(dendextend) # for comparing two dendrograms
 library(fpc) 
 library(NbClust) # finding the optimal number of clusters
 library(amap)
-
+library(flexclust)
 
 
 #statistics-----

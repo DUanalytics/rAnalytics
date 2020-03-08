@@ -1,5 +1,9 @@
 #Clustering - Credit Data
 library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(cluster)    # clustering algorithms
+library(factoextra) # clustering algorithms & visualization
 
 link="https://online.stat.psu.edu/onlinecourses/sites/stat508/files/lesson01/Credit.data"
 
