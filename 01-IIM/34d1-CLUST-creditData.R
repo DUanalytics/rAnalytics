@@ -1,5 +1,5 @@
 #Clustering - Credit Data
-
+library(dplyr)
 
 link="https://online.stat.psu.edu/onlinecourses/sites/stat508/files/lesson01/Credit.data"
 
