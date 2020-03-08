@@ -5,3 +5,4 @@ sd(mtcars$mpg) / mean(mtcars$mpg)
 
 library(sjstats)
 cv(mtcars$mpg)
+?cv
