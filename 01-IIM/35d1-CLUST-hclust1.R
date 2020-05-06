@@ -146,8 +146,5 @@ df$clustering = factor(fit$clustering)
 
 par(mfrow=c(1,1))
 ggplot(data=df, aes(x=V1,y=V2, color=clustering, shape=clustering)) +
-  geom_point() +
-  ggtitle('Clustering of Bivariate Normal Data')
-plot(nc$All.index[ ,4], type='o',
-     ylab='CCC', xlab='Number of
-     clusters', col='blue')
+  geom_point() +  ggtitle('Clustering of Bivariate Normal Data')
+plot(nc$All.index[ ,4], type='o',     ylab='CCC', xlab='Number of    clusters', col='blue')

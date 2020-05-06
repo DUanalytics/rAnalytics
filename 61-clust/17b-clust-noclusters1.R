@@ -74,6 +74,8 @@ plot(d_clust)
 
 #Method----
 library(apcluster)
+?negDistMat
+data
 d.apclus <- apcluster(negDistMat(r=2), data)
 cat("affinity propogation optimal number of clusters:", length(d.apclus@clusters), "\n")
 # 
@@ -152,6 +154,7 @@ cutree(hc.complete,h = 4.9)
 #
 library(pvclust)
 library(MASS)
+?pvclust
 data(Boston)
 boston.pv <- pvclust(Boston)
 plot(boston.pv)

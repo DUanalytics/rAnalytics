@@ -262,3 +262,4 @@ title("Parallel coordinates plot of the Iris data")
 legend("top", cex = 1, legend = as.character(levels(species_labels)), fill = unique(species_col), horiz = TRUE)
 
 #We can see that the Setosa species are distinctly different from Versicolor and Virginica (they have lower petal length and width). But Versicolor and Virginica cannot easily be separated based on measurements of their sepal and petal width/length.
+
