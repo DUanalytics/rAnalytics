@@ -59,6 +59,7 @@ plot(fit.average, hang=-1, cex=.8, main='Average Linkage Clustering')
 library(NbClust)
 devAskNewPage(ask=T)#ask for next plot
 nc = NbClust(nutrient.scaled, distance='euclidean', min.nc=2, max.nc=15, method='average')
+
 devAskNewPage(ask=F)
 par(mfrow=c(1,1))
 barplot(nc$Best.n[1, ], xlab='No of Clusters', ylab='No of Criteria', main='No of Clusters Chosen by 26 Criteria')
