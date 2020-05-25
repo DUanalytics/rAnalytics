@@ -73,3 +73,21 @@ cbind(df, newDF)
 # https://www.kdnuggets.com/2017/09/missing-data-imputation-using-r.html
 # https://www.kaggle.com/rtatman/data-cleaning-challenge-imputing-missing-values
 
+
+#------- 24 May 20------
+dataset = read.csv('E:/DUdata/students/ranjan2.csv')
+head(dataset)
+str(dataset)
+dataset$From.Date
+summary(dataset$From.Date)  #444 NAs
+dataset$From.Date = as.POSIXct(dataset$From.Date, '%d-%m-%Y %H:%M', tz='Asia/Calcutta')
+(dataset$wwkdays1 = weekdays(dataset$From.Date, abbreviate = T))
+(dataset$wwkdays2 = as.character(dataset$From.Date, '%w'))
+(dataset$wwkdays3 = as.character(dataset$From.Date, '%W'))
+(dataset$wwkdays4 = lubridate::wday(dataset$From.Date, label = TRUE))
+(dataset$wwkdays5 = lubridate::wday(dataset$From.Date))
+dataset[,c('From.Date','wwkdays1', 'wwkdays2', 'wwkdays3', 'wwkdays4', 'wwkdays5')]
+
+#https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/weekdays
+#https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html
+#https://stat.ethz.ch/R-manual/R-devel/library/base/html/strptime.html
