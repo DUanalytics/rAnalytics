@@ -1,21 +1,32 @@
 #Data Format in R 
 #When we import data into R, dates and times are usually stored as character or factor by default due to symbols such as “-”, “:” and “/”
 
+Sys.Date()  #"2020-06-06"  : YYYY-MM-DD  : %Y-%m-%b
+Sys.time() #"2020-06-06 14:22:54 IST" : %h:%m:%s timezone
 cdate1='15/August/1947'
 cdate1
+cdate1 + 1  #error
+class(cdate1)
 cdate2 = c('15-Aug-1947', "26-Jan-1950", "01-Oct-2018")
 cdate2
 
 class(cdate1) ; class(cdate2)
+#arithmetic operation like add, diff, day, month
+
 #convert to Dates
 #Default Format of Date in R
 ?as.Date()
 
 #See/ Convert Date format
-as.Date('2018-12-01')
+as.Date('2020-12-25')  #: year - month - day
+
 #Default Format : Year-Month-Date : %Y-%m-%d
-(date3= as.Date('2018-12-01',format='%Y-%m-%d'))
-class(date3)
+(date3a= as.Date('2020-12-25', format='%Y-%m-%d'))
+class(date3a)
+
+(date3b= as.Date('25-2020-12', format='%d-%Y-%m')) #: 25-%d
+class(date3b)
+date3b
 
 #Format Types ----
 #%Y: 4-digit year (1982),%y: 2-digit year (82)
@@ -23,21 +34,25 @@ class(date3)
 #%B: month (January), %b: abbreviated month (Jan) 
 #%d: 2-digit day of the month (13)
 #%A: weekday (Wednesday), %a: abbreviated weekday (Wed)
-#%d :  date in number
+
 #convert cdate1 cdate2 to date formats
 cdate1 #"15/August/1947
 date1 = as.Date(cdate1, format='%d/%B/%Y')
 date1
 class(date1)
+date1 + 1
 #
 cdate2 #"15-Aug-1947" "26-Jan-1950"
 date2 = as.Date(cdate2, format='%d-%b-%Y')
 date2
+date2 + 1:3
 #
 
 #one more practise on date format
-date3 =as.Date('30Apr18',format("%d%b%y"))
+date3 =as.Date('25Mar20',format("%d%b%y"))
 class(date3)
+date3 + 2
+as.character(date3, format='%A %Y')
 
 #Date to Characters
 class(date3)
@@ -53,7 +68,14 @@ date1
 as.numeric(date1)
 date2
 as.numeric(date2)
-as.Date('1970-01-01') 
+refDate = as.Date('1970-01-01')   #center point
+#all dates before this will have - values, after this will have + numeric values
+as.numeric(refDate)
+
+ktbday = as.Date('1993-01-07')
+as.numeric(ktbday)
+
+
 as.numeric(Sys.Date())
 Sys.Date() - as.Date('1970-01-01') 
 

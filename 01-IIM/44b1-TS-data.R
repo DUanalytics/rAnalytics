@@ -10,7 +10,7 @@ length(sales)
 #create yearly time series : start year 1980
 
 #Yearly----
-(ysales = ts(sales, frequency = 1))
+(ysales = ts(sales, frequency = 1)) #annual -1, month-12, daily-365
 
 (yearlysales = ts(sales, start=c(1980), frequency=1))
 yearlysales
@@ -22,8 +22,9 @@ plot(yearlysales)
 yearlysales1[ yearlysales1 > 50]
 class(yearlysales1)
 methods(class=ts)
+methods(class=data.frame)
 yearlysales1
-(w1= window(yearlysales1, start=1983, end=1990))
+(w1= window(yearlysales1, start=1985, end=1990))
 plot(w1)
 
 #Quarterly -----
@@ -38,7 +39,7 @@ window(qtrsales, start=c(1980, 3), end=c(1985, 2))
 12/12  # freq=12 start month=Apr/ 1990
 (monsales = ts(sales, start=c(1990,4), frequency=12))
 plot(monsales)
-window(monsales, start=c(1991, 3))
+window(monsales, start=c(1991, 3), end=c(1992,4))
 
 #create data from Feb 2000 to Nov 2002
 (monsales1 = ts(sales, start=c(2000,2), end=c(2003,3), frequency=12)) #recycling of elements beyond given sales value
@@ -51,8 +52,10 @@ window(monsales1, start=c(2000, 5), end=c(2001, 8))
 
 #Daily TS
 sales2 = ceiling(rnorm(365, mean=100, sd=10))
-sales2
+sales2  #vector of numeric values : convert to TS
 #YYYY,day
+(dailysales = ts(sales2, start=c(2017), frequency=365))
+
 (dailysales = ts(sales2, start=c(2017,10), frequency=365))
 window(dailysales, start=c(2017,50), end=c(2017,100))
 mean(window(dailysales, start=c(2017,50), end=c(2017,100)))
@@ -66,4 +69,21 @@ sales3 = floor(rnorm(16, mean=200, sd = 12))
 plot(qtrsales)
 
 #weekly
+weekdata = ceiling(rnorm(52, mean=100, sd=10))
+(weeksales = ts(weekdata, start = c(2018,1), frequency = 52))
+plot(weeksales)
 
+#year, qtr, month, week, daily
+
+#fortnight
+fortnightdata = ceiling(rnorm(12*2, mean=100, sd=10))
+(fortnightsales = ts(fortnightdata, start = c(2018,1), frequency = 24))
+plot(fortnightsales)
+
+dailysales
+diff(dailysales)
+monsales
+monthplot(monsales)
+time(monsales)
+methods(class='ts')
+#timeseries intro
