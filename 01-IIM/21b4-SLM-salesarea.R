@@ -87,7 +87,9 @@ coef(fit1)
 (Y = coef(fit1)[1] + coef(fit1)[2] * 4)
 #using model
 range(df$X)
+predict(fit1, newdata= data.frame(X=c(4,5)))
 (new1 = data.frame(X=c(4,5,3,2)))
+
 predicted2= predict(fit1, newdata= new1)
 cbind(new1, predicted2)
 #prediction can only be interpolated not extrapolated
