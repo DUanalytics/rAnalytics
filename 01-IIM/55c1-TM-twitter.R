@@ -2,12 +2,7 @@
 #Learning Business Analytics  #businessanalytics   using R  @R_Programming  at @IIMBodhGaya  with @curtisakshay  by @henryharvin_in 
 
 # load twitter library - the rtweet library is recommended now over twitteR
-library(rtweet)
-# plotting and pipes - tidyverse!
-library(ggplot2)
-library(dplyr)
-# text mining library
-library(tidytext)
+pacman::p_load(rtweet, ggplot2, dplyr, tidytext)
 
 # whatever name you assigned to your created app
 appname <- "DUtwitterProject"
@@ -77,9 +72,10 @@ tweets2 <- search_tweets(q = searchString2, n = 50, retryonratelimit = T)
 head(tweets2[1:5], n = 3)
 
 searchString3 = 'dupadhyaya'  #change it your twitter id
+
 tweets3 <- search_tweets(q = searchString3, n=100, retryonratelimit = T)
 tweets3  #there may be no data
-
+search_tweets(q="kanikatiwari8", n=100, include_rts = T)
 
 searchString4 = "businessanalytics"
 tweets4 <- search_tweets(searchString4, n=50,lang="en")
