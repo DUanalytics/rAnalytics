@@ -27,7 +27,7 @@ library(rpart)
 library(rpart.plot)
 names(data1)
 #Decision Tree- classification tree : predict survived 0 or 1
-fit1 = rpart(survived ~ . , data = data1, method = 'class')
+fit1 = rpart(Survived ~ . , data = data1, method = 'class')
 fit1
 rpart.plot(fit1, cex=.8, nn=T)  #plot
 

@@ -5,6 +5,7 @@
 library(gsheet)
 slr1 = "https://docs.google.com/spreadsheets/d/1qLHa5qFTyWacta8F-IGo6J3Zpf-BVR9OrlqONuJDqYc/edit#gid=2023826519"
 df = as.data.frame(gsheet2tbl(slr1))
+
 head(df)
 #X-area in sqft, Y-sales in some unit currency
 str(df)
