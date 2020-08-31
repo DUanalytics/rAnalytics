@@ -114,26 +114,6 @@ cbind(attendance, marks)
 cor(attendance, marks)
 #
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #y = mx + c
 x
 y = 3.45 * x + - 87

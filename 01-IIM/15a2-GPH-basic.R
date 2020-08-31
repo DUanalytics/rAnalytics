@@ -1,10 +1,10 @@
-# Combined Plots
+# Basic plots
 #plot, histogram, pie, boxplot, linechart, correlation plot
-
 
 #plot
 women
 plot(women)
+
 (x= seq(1,10))
 (x =c(1,2,3,4,5,6,7,8,9,10))
 y= seq(11,20)
@@ -32,8 +32,7 @@ mtcars$cyl
 plot(women)
 abline(lm(women$weight ~ women$height), col='red', lty=2, lwd=4)
 
-#
-#boxplot
+#boxplot-----
 str(women)
 boxplot(women$height)
 summary(women$height)
