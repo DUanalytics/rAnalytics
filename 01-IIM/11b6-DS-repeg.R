@@ -1,22 +1,13 @@
 #Reproducible Code
 
-
 mtcars 
-
 head(mtcars)
-
 recode_mtcars <- dput(head(mtcars))
-
 newdf <- recode_mtcars
-
 newdf
-
 #if Df has factors 
-
 recode_iris <- dput(droplevels(iris[1:4, ]))
-
 recode_iris
-
 
 #One other caveat for dput is that it will not work for keyed data.table objects or for grouped tbl_df (class grouped_df) from dplyr. In these cases you can convert back to a regular data frame before sharing, dput(as.data.frame(my_data))
 

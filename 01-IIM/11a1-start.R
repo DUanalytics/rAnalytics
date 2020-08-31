@@ -50,7 +50,6 @@ methods(class='matrix')  #methods available for a class of object
 plot(10:100) #basic command to plot
 plot(women)
 
-
 #vector
 #how to run command
 #check datasets
