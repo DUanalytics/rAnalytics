@@ -5,7 +5,8 @@
 #https://medium.com/datadriveninvestor/hr-analytics-with-data-science-adc1649f4596
 #predict the possible churn of employees in a firm. Using Data Science procedures, companies can predict employees who are likely to leave and also use Exploratory Data Analysis to find patterns that can inform reasons for which employees may decide to leave.
 #Read newly saved file
-attrition <- read.csv("data/attrition.csv", stringsAsFactors = T)
+url = 'https://raw.githubusercontent.com/DUanalytics/datasets/master/csv/attrition.csv'
+attrition <- read.csv(url, stringsAsFactors = T)
 #Examine data structures
 str(attrition)
 #Lets start with some correlation relationships
