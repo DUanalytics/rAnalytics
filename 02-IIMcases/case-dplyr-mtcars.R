@@ -7,6 +7,7 @@ head(mtcars)
 
 filter(mtcars, cyl == 8)
 filter(mtcars, cyl < 6)
+mtcars %>% filter(cyl == 8) %>% summarise(meanMPG = mean(mpg))
 
 # Multiple criteria
 filter(mtcars, cyl < 6 & vs == 1)
@@ -18,9 +19,8 @@ filter(mtcars, cyl < 6, vs == 1)
 
 filter(mtcars, row_number() == 1L)
 filter(mtcars, row_number() == n())
-filter(mtcars, between(row_number(), 5, n()-2))
-
-
+filter(mtcars, between(row_number(), 2, n()-2))
+mtcars
 
 #mutate----
 mutate(mtcars, displ_l = disp / 61.0237) #keeps other col
