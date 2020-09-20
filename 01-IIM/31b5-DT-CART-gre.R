@@ -10,6 +10,8 @@ library(ggplot2)
 df1 <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 ## view the first few rows of the data
 head(df1)
+table(df1$admit)
+273/400
 dim(df1)
 data = df1
 data[, c('admit','rank')] = lapply(data[, c('admit','rank')], as.factor)
@@ -55,7 +57,7 @@ Pdtree1B  #class predicted
 (sum1B <- table(Pdtree1B, test$admit, dnn=c('Predicted','Actual')))
 caret::confusionMatrix(sum1B)  #some improvement
 caret::confusionMatrix(sum1)
-
+head()
 #better plot----
 rpart.plot(dtree1prune, branch.lty=3, nn=T, type=4, cex=.8)
 

@@ -51,6 +51,9 @@ range(df$X)
 fit1 = lm(Y ~ X, data=df) # create Simple Linear Model Y wrt X
 fit1
 summary(fit1)
+range(df$X)
+(newdata = data.frame(X= c(2.5,3.2)))
+predict(fit1, newdata = newdata)
 
 
 #few extras
