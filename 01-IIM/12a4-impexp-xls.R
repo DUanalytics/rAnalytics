@@ -22,9 +22,15 @@ df_excel2b
 #see the excel sheet in data folder: windows explorer
 
 library(readxl)  #for reading only, faster
+readxl::excel_sheets("./data/mtcars.xlsx")  #names of sheets in workbook
+df_rxl1 <- readxl::read_excel( "./data/mtcars.xlsx", 'iris1')
+df_rxl2 <- readxl::read_excel( "./data/mtcars.xlsx", 2)
 
-df_rxl1 <- readxl::read_excel( "./data/mtcars.xlsx", 'iris2')
 head(df_rxl1)
-readxl::excel_sheets("./data/mtcars.xlsx")  #names of sheets
+head(df_rxl2)
+readxl::read_excel( "./data/mtcars.xlsx", 2, skip=1)
+
+
 ?`readxl-package`
+?read_excel
 #end here

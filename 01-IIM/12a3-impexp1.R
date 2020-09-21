@@ -11,6 +11,8 @@ write.csv(iris, "./data/irisF.csv", row.names=F) #without rownames
 write.csv(iris, "./data/irisT.csv", row.names=T)  #with rownames
 
 #go to folder data and open these csv files
+read.csv(file='./data/irisF.csv')
+
 readiris = read.csv(file="./data/irisF.csv", header = TRUE,sep = ",")
 readiris
 readmtcars = read.csv(file="./data/mtcarsF.csv", header = TRUE,sep = ",")

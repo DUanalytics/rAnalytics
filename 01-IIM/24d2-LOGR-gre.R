@@ -151,3 +151,5 @@ confusionMatrix(data$admit, prob, threshold = .2)
 
 print(summary(am.data))
 
+#end
+
