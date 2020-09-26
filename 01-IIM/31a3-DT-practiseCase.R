@@ -1,6 +1,10 @@
 #DT - simple case
 #https://www.gormanalysis.com/blog/decision-trees-in-r-using-rpart/
+#https://en.wikipedia.org/wiki/Staged_crash
+#RearEnd crash - Fraud
 
+library(rpart)
+library(rpart.plot)
 train <- data.frame(
   ClaimID = c(1,2,3),
   RearEnd = c(TRUE, FALSE, TRUE),
@@ -19,7 +23,7 @@ mytree <- rpart(
   minsplit = 2, 
   minbucket = 1
 )
-
+train
 mytree
 
 library(rattle)
@@ -94,7 +98,7 @@ Whiplash = c(TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE),
 Fraud = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE))
 
 train
-let’s grow our decision tree, restricting it to one split by setting the maxdepth argument to 1.
+#let’s grow our decision tree, restricting it to one split by setting the maxdepth argument to 1.
 
 mytree <- rpart(
   Fraud ~ RearEnd + Whiplash, 
@@ -122,3 +126,4 @@ mytree <- rpart(
 
 fancyRpartPlot(mytree, caption = NULL)
 #Now our model suggests that Whiplash is the best variable to identify fraudulent claims. What I just described is known as a valuation metric and its up to the discretion of the insurance company to decide on it
+

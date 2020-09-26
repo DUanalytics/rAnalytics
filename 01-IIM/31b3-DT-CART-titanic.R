@@ -1,6 +1,6 @@
 # Decision Tree - Classification
 #we want predict for combination of input variables, is a person likely to survive or not
-
+library(dplyr)
 #import data from online site
 path = 'https://raw.githubusercontent.com/DUanalytics/datasets/master/csv/titanic_train.csv'
 titanic <- read.csv(path)
@@ -54,3 +54,4 @@ predict(prunetree2, newdata = testdata2, type='prob')
 
 #rpart, CART, classification model
 #regression decision = predict numerical value eg sales
+

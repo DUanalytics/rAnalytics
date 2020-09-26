@@ -194,3 +194,4 @@ rpart.plot(irisregression)
 printcp(irisregression)
 pruneRT = prune(irisregression, cp=.008)
 rpart.plot(pruneRT)
+

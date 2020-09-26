@@ -1,3 +1,4 @@
+#outlook
 
 outlook =c('Sunny', 'Sunny', 'Overcast', 'Rain','Rain', 'Rain','Overcast', 'Sunny', 'Sunny','Rain','Sunny', 'Overcast','Overcast','Rain')
 temperature = c( 'Hot','Hot','Hot','Mild','Cool','Cool','Cool','Mild','Cool','Mild','Mild','Mild','Hot','Mild')

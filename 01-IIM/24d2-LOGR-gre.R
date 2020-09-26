@@ -20,6 +20,11 @@ for (i in 1:4) { print(sd(inputData[,i]))}
 #use apply functions
 sapply(inputData, sd)
 lapply(inputData, sd)
+quantile(inputData$gre)
+quantile(inputData$gre, c(.1,.2, .3, .7,.8,1))
+quantile(inputData$gre, seq(0,1,.1))
+quantile(inputData$gre, seq(0,1,.01))
+
 lapply(inputData, quantile)
 sapply(inputData, quantile)
 
@@ -29,7 +34,6 @@ str(inputData)
 data= inputData  # make a copy for futher analysis
 data$rank = as.factor(data$rank)
 data$admit = factor(data$admit)
-str(data)
 str(data)
 ## 2way contingency table of cat outcome and predictors we want
 ## to make sure there are not 0 cells
