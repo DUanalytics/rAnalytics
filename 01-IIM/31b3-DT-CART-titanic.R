@@ -16,11 +16,23 @@ str(data)
 #Decision Tree
 names(data)
 table(data$Survived)
+342/891
 str(data)
 data$Pclass = factor(data$Pclass)
+str(data)
+table(data$Sex)
+table(data$Pclass)
+table(data$Pclass, data$Survived)
+head(data)
 fit <- rpart(Survived ~ ., data = data, method = 'class')
+#fit1 <- rpart(Survived ~ Pclass + Sex + Age + Sibsp, data=data, method='class')
 fit
-rpart.plot(fit, extra = 104, cex=.8,nn=T)  #plot
+rpart.plot(fit)
+rpart.plot(fit, extra = 104, cex=.6, nn=T)  #plot
+nrow(data)
+table(data$Survived)
+342/891; 549/891
+table(data$Sex)
 head(data)
 printcp(fit) #select complexity parameter
 prunetree2 = prune(fit, cp=.018)
