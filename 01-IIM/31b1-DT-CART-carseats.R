@@ -13,7 +13,7 @@ library(rpart.plot)
 #Model
 tree1 = rpart(Sales ~ . , data=data, method='anova' )
 tree1
-rpart.plot(tree1, cex=.8,nn=T)
+rpart.plot(tree1, cex=.6,nn=T)
 
 #this is large tree, so prune it: check cp
 printcp(tree1)
@@ -44,7 +44,7 @@ library(dplyr)
 (predictedSales=predict(prunetree, newdata=testdata, type='vector'))
 cbind(testdata, predictedSales)
 #next line will show error because we have to predict numerical value instead of class/ category, so type of response reqd is vector not class
-(predict(prunetree, newdata=testdata, type='class'))
+(predict(prunetree, newdata=testdata, type='vector'))
 #ERROR - use vector
 
 #see online help here
