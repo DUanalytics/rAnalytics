@@ -1,4 +1,9 @@
 # Decision Tree # loanapproved = age + job + house + credit
+
+library(rpart)
+library(rpart.plot)
+library(dplyr)
+
 loanapproved = sample(x=c('Yes','No'), size=50, replace=T)
 age = runif(50,30,60)
 house = sample(x=c('Yes','No'), size=50, replace=T, prob=c(.4,.6))
