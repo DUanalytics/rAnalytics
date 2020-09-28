@@ -8,7 +8,7 @@ library(tm)
 
 # Read the text file from file
 #text = readLines(file.choose())
-text = readLines(con= file("ximb.txt"))
+text = readLines(con= file("iim.txt"))
 text
 text[1]
 # Load the data as a corpus
@@ -49,6 +49,7 @@ head(d, 10)
 
 #Generate Word Cloud
 set.seed(1234)
+par(mar=c(0,0,0,0))
 wordcloud(words = d$word, freq = d$freq, min.freq = 1,    max.words=200, random.order=FALSE, rot.per=0.35,        colors=brewer.pal(8, "Dark2"))
 
 findFreqTerms(dtm, lowfreq = 4)
@@ -84,3 +85,4 @@ filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-
 
 res<-rquery.wordcloud(filePath, type ="file", lang = "english")
 #res<-rquery.wordcloud(filePath2, type ="file", lang = "english")
+
