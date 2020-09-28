@@ -14,6 +14,7 @@ km12 = kmeans(marks[,1], center=3)
 km12
 
 km12$cluster  #which row is assigned to which cluster No
+cbind(marks[,1], km12$cluster)
 km12$size  #size of each cluster
 km12$centers  #average of each variable for each cluster
 km12$iter  #no cycles, optimal cluster was found
@@ -28,8 +29,11 @@ km12$tot.withinss + km12$betweenss
 km12$totss
 km12$iter
 
+
 #now do it for both the columns
+marks
 km23 = kmeans(marks, center=3)
+#sqrt((x1-x2)^2 + (y1-y2)^2)
 km23
 km23$centers
 
