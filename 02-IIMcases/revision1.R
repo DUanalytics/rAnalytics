@@ -6,11 +6,16 @@ vector1[1:5]
 (vector2 = trunc(rnorm(n=24, mean=60, sd=10)))
 mean(vector2)
 hist(vector2)
-
+length(vector2)/5
 (matrix1 = matrix(data=vector2, nrow=6))
+dim(matrix1)
 colSums(matrix1)
 colMeans(matrix1)
+rowSums(matrix1)
+addmargins(matrix1, FUN=c(mean, sum))
+#prop.table, margin.table, lapply, mapply, sapply, tapply
 
+#dataframe 
 (rollno = 1:5)
 (name = paste('S',1:5, sep='_'))
 (gender = factor(sample(x=c('M','F'), size=5, replace=T, prob=c(.5,.5))))
@@ -34,7 +39,7 @@ boxplot(x=df1$marks)
 #import/export data - csv, excel, googlesheet
 write.csv(df1, 'data/revision1.csv')
 list.files('data')
-
+#-----------------------------------------------------------
 #Modeling - Linear, Logistic, Decision Tree, Clustering, 
 #partitioning the data data
 df2 = mtcars[,c('mpg','hp','wt','am')]
