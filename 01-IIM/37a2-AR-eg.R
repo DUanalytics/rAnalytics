@@ -15,7 +15,7 @@ itemlist
 length(itemlist)
 ## set transaction names
 names(itemlist) <- paste("Tr",c(1:9), sep = "")
-itemlist
+itemlist   #items in transactions
 ## coerce into transactions
 tdata3 <- as(itemlist, "transactions")
 tdata3
@@ -32,7 +32,6 @@ image(tdata)
 #Analysis
 freqitems = eclat(tdata) #default support=.1
 freqitems = eclat(tdata, parameter = list(minlen=1, supp=.1, maxlen=2 ))
-
 freqitems
 inspect(freqitems)
 
@@ -73,3 +72,4 @@ write.csv(rules_DF, './myrules1.csv')
 
 #Visualisation
 plot(rules)
+

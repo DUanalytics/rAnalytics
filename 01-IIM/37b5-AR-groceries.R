@@ -115,3 +115,4 @@ inspect(rules4)
 #end of AR
 #understand the measures of AR - support, confidence, lift
 #apply the rules; find frequent items, sort rules, subset rules on conditions ; plot rule; interpret them; bring changes to your strategy
+
