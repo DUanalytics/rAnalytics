@@ -1,5 +1,4 @@
-#IIMLN
-#day1
+#Revision of Topics
 
 mtcars
 ?mtcars   #help on mtcars
