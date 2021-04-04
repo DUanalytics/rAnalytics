@@ -1,5 +1,11 @@
 #01-MBB  : Initial Setup
 
+#git----
+#create a git profile to follow, manage your online repositories
+#https://github.com/  (signup- preferebly use personal id)
+#https://github.com/DUanalytics/rAnalytics  (star this repository)
+#https://github.com/dupadhyaya  (you follow others profile)
+
 #download & install----
 #https://cran.r-project.org/bin/windows/base/  (R Base) : latest 4.0.5
 #choose latest version of your OS
