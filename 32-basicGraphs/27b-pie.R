@@ -18,12 +18,10 @@ pie(slices,labels = lbls, col=rainbow(length(lbls)),
 library(plotrix)
 slices <- c(10, 12, 4, 16, 8) 
 lbls <- c("US", "UK", "Australia", "Germany", "France")
-pie3D(slices,labels=lbls,explode=0.1,
-      main="Pie Chart of Countries ")
+pie3D(slices,labels=lbls,explode=0.1,  main="Pie Chart of Countries ")
 
 # Pie Chart from data frame with Appended Sample Sizes
 mytable <- table(iris$Species)
 lbls <- paste(names(mytable), "\n", mytable, sep="")
-pie(mytable, labels = lbls, 
-    main="Pie Chart of Species\n (with sample sizes)")
+pie(mytable, labels = lbls,   main="Pie Chart of Species\n (with sample sizes)")
 
