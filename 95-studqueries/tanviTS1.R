@@ -41,6 +41,7 @@ RGDP1B <- reshape2::melt(data=RGDP1A, id.vars='period', variable.name ='country'
 head(RGDP1B)
 str(RGDP1B)
 
+options(scipen = F)
 RGDP1B %>% ggplot(., aes(x=period, y=value, group=country)) + geom_line(aes(colour=country)) + guides(colour=guide_legend(ncol=1)) 
 
 #create Quarterly Time Series for Austria only
