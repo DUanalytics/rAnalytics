@@ -7,7 +7,7 @@
 #load libraries #install packages - rpart, rpart.plot, RColorBrewer
 library(rpart)# doing classification
 library(rpart.plot) # visualising the tree
-model= rpart(y  ~ ., method='class', data= , control=rpart.control(minsplit=4, cp=0.00001))
+#model= rpart(y  ~ ., method='class', data= , control=rpart.control(minsplit=4, cp=0.00001))
 rpart.plot()
 
 #Set any control Parameters
@@ -53,6 +53,7 @@ head(students1)
 fit = rpart(buy ~ gender, data= students1)
 fit
 table(students1$buy)
+dev.off()
 rpart.plot(fit,nn=T)
 
 fit1 = rpart(buy ~ gender, data=students1, minsplit=4, minbucket=2)

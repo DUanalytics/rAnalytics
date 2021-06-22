@@ -1,8 +1,8 @@
 #Understanding Splitting and selection of variables
 
 #install the libraries
-library(rpart)
-library(rpart.plot)
+pacman::p_load(rpart, rpart.plot)
+#library(rpart); library(rpart.plot)
 #---
 
 (gender = c(rep('M', 60), rep('F', 40)))

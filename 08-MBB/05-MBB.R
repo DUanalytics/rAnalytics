@@ -33,7 +33,7 @@ sMarks
 #change orientation
 sMarksLong = reshape2::melt(data=sMarks, id.vars=c('rollno'))
 head(sMarksLong)
-sMarksWide = reshape2::dcast(data=sMarksWide, rollno ~ variable, value.var='value') 
+sMarksWide = reshape2::dcast(data=sMarksLong, rollno ~ variable, value.var='value') 
 head(sMarksWide)
 
 # Basic Statistics-----
@@ -69,5 +69,17 @@ pie(table(mtcars$cyl))
 # Extra Topics
 # Advanced Graphs------
 # Data Visualization using GGPlot Library
+library(ggplot2)
+
+head(mtcars)
+plot(mtcars$wt, mtcars$mpg)
+ggplot(data=mtcars, aes(x=wt, y=mpg)) + geom_point()
+ggplot(data=mtcars, aes(x=wt, y=mpg, color=factor(gear))) + geom_point()
+ggplot(data=mtcars, aes(x=wt, y=mpg, color=factor(gear), size=hp, shape=factor(am))) + geom_point()
+ggplot(data=mtcars, aes(x=factor(gear), y=mpg, fill=factor(gear))) + geom_boxplot()
+
+#http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization
+  
+
 # Text Mining------
 # Text Mining Overview, Applications of TM, Steps for TM in R, creating Word Cloud using diff packages

@@ -15,3 +15,4 @@ hist(df1$balance)
 table(df1$marital)
 barplot(table(df1$marital), col=1:3, beside=T)
 barplot(table(df1$loan), col=1:3, beside=T)
+

@@ -3,10 +3,7 @@
 library(wordcloud)
 
 ?wordcloud
-#wordcloud(words,freq,scale=c(4,.5),min.freq=3,max.words=Inf,
-          random.order=TRUE, random.color=FALSE, rot.per=.1,
-          colors="black",ordered.colors=FALSE,use.r.layout=FALSE,
-          fixed.asp=TRUE)
+#wordcloud(words,freq,scale=c(4,.5),min.freq=3,max.words=Inf, random.order=TRUE, random.color=FALSE, rot.per=.1, colors="black",ordered.colors=FALSE,use.r.layout=FALSE, fixed.asp=TRUE)
 (words1 = c(letters, LETTERS, 0:9))
 length(words1)
 (freq1 = seq(1, 1000, len = 62))
@@ -30,6 +27,12 @@ wordcloud2(demoFreq, size = 1,shape = 'pentagon')
 wordcloud2(demoFreq, size = 1,shape = 'star')
 
 wordcloud2(demoFreq, size = 2,  color = "random-light", backgroundColor = "grey")
+
+defect = paste('defect', 1:100, sep='_')
+freq = round(rnorm(n=100, mean=40, sd=10))
+quality = data.frame(defect, freq)
+wordcloud2(quality, size = 1,shape = 'star')
+
 
 (iimstudents = data.frame(word=words2, freq=freq2))
 par(mar=c(0,0,0,0))
