@@ -83,6 +83,7 @@ head(tweets.df2)
 #-----
 library("syuzhet") #library for sentiment analysis - comparison
 word.df <- as.vector(tweets.df2)
+word.df
 emotion.df <- get_nrc_sentiment(word.df)
 emotion.df2 <- cbind(tweets.df2, emotion.df) 
 head(emotion.df2)
@@ -91,6 +92,7 @@ word.df
 #-----
 sent.value <- get_sentiment(word.df)
 sent.value
+word.df[44]
 tweets[c(16,62)]
 most.positive <- word.df[sent.value == max(sent.value)]
 most.positive

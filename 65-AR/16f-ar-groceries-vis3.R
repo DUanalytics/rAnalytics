@@ -4,8 +4,7 @@ library(arules)
 library(datasets)
 data(Groceries)
 library(arulesViz)
-rules <- apriori(Groceries, parameter = list(support=.001, confidence=.7,
-                                             maxlen=5, target='rules' ))
+rules <- apriori(Groceries, parameter = list(support=.001, confidence=.7,                   maxlen=5, target='rules' ))
 
 
 #Matrix-based visualization techniques organize the antecedent and consequent itemsets on the x and y-axes, respectively. A selected interest measure is displayed at the intersection of the antecedent and consequent of a given rule. If no rule is available for a antecedent/consequent combination the intersection area is left blank.

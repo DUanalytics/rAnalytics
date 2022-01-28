@@ -7,9 +7,11 @@ pacman::p_load(rpart, rpart.plot, dplyr)
 data = read.csv(url)
 head(data)
 summary(data)
+data %>% group_by(Outcome)  %>% summarise(meanAge = mean(Age, na.rm=T), max(Glucose), max(BloodPressure))
 
 names(data)
 table(data$Outcome)
+ 500/(500 + 268)
 str(data)
 
 data$Outcome = factor(data$Outcome)
@@ -22,7 +24,7 @@ rpart.plot(fit, extra = 104, cex=.6, nn=T)  #plot
 
 printcp(fit) #select complexity parameter
 prunetree2 = prune(fit, cp=.017)
-rpart.plot(prunetree2, cex=.8,nn=T, extra=104)
+rpart.plot(prunetree2, cex=.5,nn=T, extra=104)
 prunetree2
 
 (testdata = sample_n(data,2))
@@ -30,7 +32,7 @@ predict(prunetree2, newdata=testdata, type='class')
 predict(prunetree2, newdata=testdata, type='prob')
 str(data)
 
-testdata2 = data.frame(Pregnancies=2, Glucose=120, BloodPressure=80, SkinThickness=30, Insulin=20, BMI=30, DiabetesPedigreeFunction=.6, Age=40)
+testdata2 = data.frame(Pregnancies=2, Glucose=130, BloodPressure=80, SkinThickness=30, Insulin=20, BMI=30, DiabetesPedigreeFunction=.6, Age=40)
 testdata2
 
 predict(prunetree2, newdata = testdata2, type='class')
@@ -53,5 +55,19 @@ dtree1$variable.importance
 #predict on test----
 Pdtree1 <- predict(dtree1, type='class', newdata=test)
 Pdtree1  #class predicted
+length(Pdtree1)
+cbind(test$Outcome, Pdtree1)
 (summary1 <- table(Pdtree1, test$Outcome, dnn=c('Predicted','Actual')))
 caret::confusionMatrix(summary1)
+(102+38)/192
+
+
+#revise
+#data import
+#partition/ split data
+#create model
+#predict model on test
+#confusion matrix
+#accuracy
+#predict on unknown IVs
+#visual plot

@@ -72,9 +72,11 @@ tweets2 <- search_tweets(q = searchString2, n = 50, retryonratelimit = T)
 head(tweets2[1:5], n = 3)
 
 searchString3 = 'dupadhyaya'  #change it your twitter id
+searchString3 = 'KILANIAGAURAV'
 
 tweets3 <- search_tweets(q = searchString3, n=100, retryonratelimit = T)
 tweets3  #there may be no data
+tweets3[,2:5]
 search_tweets(q="kanikatiwari8", n=100, include_rts = T)
 
 searchString4 = "businessanalytics"
