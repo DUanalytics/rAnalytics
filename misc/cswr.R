@@ -11,3 +11,4 @@ m
 j = jsonlite::toJSON(m)
 j
 cat(j, file='metadata.json')
+
