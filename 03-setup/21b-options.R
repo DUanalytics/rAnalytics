@@ -55,3 +55,4 @@ par()
 par(no.readonly = T)
 
 stop('test it')
+
