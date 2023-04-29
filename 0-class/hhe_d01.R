@@ -1,6 +1,9 @@
-#This is 2nd class of XIMB
+#HHE Batch : Apr 2023
+
 mtcars
-#control+enter
+#control+enter   to run a line and move ahead
+#customise shortcuts 
+
 x1 = c(1,4,6)
 x1[2]
 x1[c(1,3)]

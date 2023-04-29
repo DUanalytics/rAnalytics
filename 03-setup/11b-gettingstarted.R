@@ -10,5 +10,5 @@ detach("package:dplyr", unload=TRUE)
 sessionInfo()
 
 library(arules)
+sessionInfo()
 
-apriori()

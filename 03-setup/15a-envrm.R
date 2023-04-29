@@ -15,9 +15,11 @@ dir()
 # To clear the console--- Press Control and then L Key
 
 getwd()         # print the current working directory
-setwd("E:\\rWork\\rProjects\\analytics1")  # set working directory
+setwd("E:\\analytics\\projects\\ranalytics")  # set working directory
 getwd()
-setwd("E:\\rWork\\rProjects\\analytics")  # set working directory
+setwd("E:\\analytics\\projects\\graphs")  # set working directory
+getwd()
+setwd("E:\\analytics\\projects\\ranalytics")  # set working directory
 
 ls()        # list the objects in the current workspace
 
