@@ -1,5 +1,6 @@
+
 # Matrices
-ix(1:12, ncol=3, byrow=T))
+m1 = matrix(1:12, ncol=3, byrow=T)
 
 class(m1)
 #[1] "matrix"
@@ -21,7 +22,7 @@ dim(m3)= c(6,4)
 m3
 
 #access elements
-m2
+m2 = m1
 m2[1,]  #first row
 m2[c(1,3,4),]  #1st,3rd,4th row
 
@@ -60,3 +61,4 @@ addmargins(m1,1,sum) #colwise function
 addmargins(m1,2,mean) #rowwise function
 addmargins(m1,c(1,2),mean) #row & col wise function
 addmargins(m1,c(1,2),list(list(mean,sum), list(var,sd))) #row & col wise function
+

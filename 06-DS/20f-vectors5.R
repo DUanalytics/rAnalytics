@@ -135,3 +135,11 @@ mean(x)
 mean(x, na.rm=T)
 is.na(x)
 x[!is.na(x)] #non missing values
+
+
+
+# Vectors 2
+
+x <- vector()
+# with a length and type
+vector("character", length = 10)

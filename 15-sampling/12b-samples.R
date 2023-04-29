@@ -1,4 +1,5 @@
 # Samples from original set
+options(scipen=99)
 
 #rollno, product no etc
 (rollno=1:10)
