@@ -17,12 +17,42 @@ class(DF2)
 
 
 #mutate------
-df <- df %>% mutate(gear = factor(gear))
-names(df)
+df %>% mutate(gear = factor(gear)) %>% summary()
 
-df <- df %>% mutate_at(c('cyl','vs', 'am','carb'), as.factor)
-summary(df)
+df %>% mutate_at(c('cyl','vs', 'am','carb'), as.factor) %>% summary()
+df %>% mutate(across(c(cyl, vs, am, carb), .fns= as.factor))  %>% str()
+df %>% mutate(across(c(2,8:11), .fns= as.factor))   %>% summary()
 
+df %>% mutate(across(c(mpg, wt, hp), .fns= round)) %>% head()
+
+cols = c('mpg', 'hp')  #list of cols
+df %>% mutate(across(all_of(cols), .fns= round)) %>% head()
+
+#only numeric & mpg & wt
+df %>% mutate(across(where(is.double) & c(mpg, wt), .fns= round)) %>% head()
+
+#summarise----purr style
+df %>% group_by(gear)  %>% summarise(across(all_of(cols), ~mean(.x, na.rm=T)))
+df %>% group_by(gear)  %>% summarise(across(all_of(cols), list(mean=mean, sd=sd)))
+
+#names of output-----
+df %>% group_by(gear)  %>% summarise(across(all_of(cols), list(mean=mean, sd=sd), .names = '{.col}.{.fn}'))
+df %>% group_by(gear)  %>% summarise(across(all_of(cols), list(mean=mean, sd=sd), .names = '{.fn}.{.col}'))
+
+df %>% filter(if_any(.cols = c(1:11), .fns= is.character))
+df %>% filter(if_any(.cols = c(1:11), .fns= is.integer))
+df %>% filter(if_any(.cols = c(1:11), .fns= is.numeric))
+
+df %>% filter(if_all(.cols = c(1,3,4,5), .fns= is.numeric))
+
+df %>% select_if(is.numeric)  %>% names()
+df %>% select_if(where(is.numeric))  %>% names()
+df %>% purrr::discard(~is.numeric(.))  %>% names()
+df %>% purrr::discard(~ !is.numeric(.))  %>% names()
+df %>% purrr::keep(~ is.numeric(.))  %>% names()
+df %>% purrr::keep(~ is.factor(.))  %>% names()
+df %>% mutate_at(c('cyl','vs', 'am','carb'), as.factor) %>% purrr::keep(~ is.factor(.))  %>% names()
+df %>% select_if(is.integer)
 
 #groupby-------
 df %>% select(gear, mpg, hp, disp) %>% group_by(gear)  %>% summarise(across(everything(), mean))
