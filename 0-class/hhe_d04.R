@@ -53,3 +53,34 @@ qqline(lm2_residuals)   #few portions around the straight line
 
 #multi-collinearity
 library(ggcorrplot)
+df_subset = df[, c('wt', 'hp', 'drat')]
+(corr_matrix= round(cor(df_subset),2))
+ggcorrplot(corr_matrix, hc.order=T, type='lower', lab=T)
+#there is strong corr (< .8) , then keep only 1
+
+#compare model----
+anova(lm2)
+#anova(model1, model2)  #if pvalue < .05, choose model1
+
+#another way to check assumptions
+plot(lm2)
+
+par(mfrow=c(2,2))
+plot(lm2)
+#5key assumptions-----
+#linear relationship, Multivariate normality, Little or no Multicollinearity, No Auto Correlation, Homoscedasticity
+
+library(ggfortify)
+autoplot(lm2)
+par(mfrow=c(1,1))
+#residual vs Fitted - Linear Relationship
+plot(lm2, 1)
+#Normal Q-Q : Normally Distributed Residuals
+plot(lm2, 2)
+#Scale-Location (Spread) : Homoeneity of variance of residuals. it should b horizontal line
+plot(lm2, 3)
+#Residuals vs Leverage : Influential cases (outliers)
+plot(lm2, 5)
+#Cooks Distance
+plot(lm2, 4)  #3 extreme
+plot(lm2, 4, id.n=5)   #top 5 extreme values
