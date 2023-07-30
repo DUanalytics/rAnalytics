@@ -19,3 +19,4 @@ library(ggbeeswarm)
 ggplot(iris, aes(x = Species, y = Sepal.Width)) +
   geom_half_boxplot() +
   geom_beeswarm(beeswarmArgs = list(side = 1))
+
