@@ -101,7 +101,24 @@ table(mt$cyl)
 mt$cyl
 table(mt$cyl, mt$am)
 
+#dplyr-----
 
+library(dplyr)
+?mtcars
+names(mt)
+mt %>% group_by(gear) %>% count()
+mt %>% group_by(gear) %>% tally()
+mt %>% group_by(gear) %>% summarise(n=n())
+mt %>% group_by(gear) %>% summarise(n=n(), meanMPG = mean(mpg, na.rm=T), minMPG = min(mpg, na.rm=T), maxMPG = max(mpg, na.rm=T))
 
+mt %>% group_by(gear,am) %>% summarise(n=n(), meanMPG = mean(mpg, na.rm=T), minMPG = min(mpg, na.rm=T), maxMPG = max(mpg, na.rm=T))
 
+mt %>% arrange(mpg)
+mt %>% arrange(gear, -mpg) %>% select(gear, mpg)
+mt %>% group_by(gear)  %>% slice_max(mpg, n=1)
+mt %>% group_by(gear)  %>% slice_min(mpg, n=1)
+mt %>% group_by(gear)  %>% slice_max(hp, n=2)
 
+mt %>% group_by(gear) %>% summarise(n=n(), meanMPG = mean(mpg, na.rm=T), meanWT = mean(wt, na.rm=T))
+
+mt %>% group_by(gear, am)  %>% tally() 
