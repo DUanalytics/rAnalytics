@@ -2,7 +2,7 @@
 #(https://cran.r-project.org/web/packages/lpSolveAPI/lpSolveAPI.pdf)
 #https://www.rdocumentation.org/packages/lpSolveAPI/versions/5.5.2.0-17
 
-
+pacman::p_load(lpSolveAPI)
 #addcolumn-----
 #Add a column to an lpSolve linear program model object
 add.column(lprec, x, indices)
