@@ -90,3 +90,4 @@ rules<-apriori(data=dt, parameter=list(supp=0.001,conf = 0.8),
 rules<-sort(rules, decreasing=TRUE,by="confidence")
 rules
 inspect(rules)
+
